@@ -75,7 +75,7 @@ def head(lang, title, desc, path):
 
 
 def foot(lang):
-    links = "".join(f'<a href="{e(v)}">{e(k)}</a>' for k, v in SITE["links"].items())
+    links = "".join(f'<a href="{e(v)}" target="_blank" rel="noopener">{e(k)}</a>' for k, v in SITE["links"].items())
     return f"""</main>
 <footer class="site-foot"><div class="wrap">
 <div><b>{SITE['name']}</b><div style="margin-top:8px"><a href="mailto:{SITE['email']}">{SITE['email']}</a> · {UI[lang]['footer_city']}</div></div>
