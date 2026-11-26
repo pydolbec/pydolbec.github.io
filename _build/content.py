@@ -55,7 +55,7 @@ UI = {
         "mba_exec": "MBA and executive teaching",
         "cases": "Teaching cases",
         "supervision": "Supervision",
-        "read_free": "Read free online",
+        "read_free": "Read free online", "download_pdf": "Download free PDF",
         "view_case": "View case",
         "background": "Background",
         "article": "Journal article",
@@ -104,7 +104,7 @@ UI = {
         "mba_exec": "MBA et formation des cadres",
         "cases": "Études de cas",
         "supervision": "Supervision",
-        "read_free": "Lire gratuitement en ligne",
+        "read_free": "Lire gratuitement en ligne", "download_pdf": "Télécharger le PDF gratuit",
         "view_case": "Voir le cas",
         "background": "Parcours",
         "article": "Article de revue",
@@ -208,12 +208,14 @@ ABOUT = {  # adapted from the Concordia faculty biography
         "My research examines how markets become complex and how people and organizations manage that complexity. I study how public organizations respond to market pressures, how companies contribute to society while satisfying shareholders, and how consumers reshape markets.",
         "My projects examine markets for coffee, tattoos, sneakers, fashion, music, transportation, microdosing and education, as well as social projects in Africa, South America and Southeast Asia. With my students, I also study digital influence, online influencers and the acculturation of wealthy consumers.",
         "My work appears in the Journal of Consumer Research, Journal of Marketing Research, Journal of Marketing, Academy of Management Journal, Journal of the Academy of Marketing Science and International Journal of Research in Marketing, where it has received most-cited and most-downloaded distinctions. I have presented it at the World Economic Forum and at the conferences of the Association for Consumer Research, the European Association for Consumer Research, Consumer Culture Theory and the American Marketing Association. I have received close to $1M in research funding, mainly from the Social Sciences and Humanities Research Council and the Fonds de recherche du Québec – Société et culture.",
+        "I sit on the editorial review boards of the Journal of Consumer Research, Journal of Marketing Research, Journal of Consumer Psychology, Marketing Theory, European Journal of Marketing, Journal of Advertising Research and Recherche et Applications en Marketing.",
     ],
     "fr": [
         "Nous faisons face à la complexité lorsqu'aucune ligne directrice claire ne guide l'action. Des intérêts politiques divergents, des ruptures technologiques et des bouleversements sociaux ont créé des attentes concurrentes et divisives sur ce que nous devrions faire dans nos vies personnelles et en société.",
         "Ma recherche examine comment les marchés deviennent complexes et comment les personnes et les organisations gèrent cette complexité. J'étudie comment les organisations publiques répondent aux pressions du marché, comment les entreprises contribuent à la société tout en satisfaisant leurs actionnaires, et comment les consommateurs transforment les marchés.",
         "Mes projets portent sur les marchés du café, du tatouage, des sneakers, de la mode, de la musique, du transport, du microdosage et de l'éducation, ainsi que sur des projets sociaux en Afrique, en Amérique du Sud et en Asie du Sud-Est. Avec mes étudiants, j'étudie aussi l'influence numérique, les influenceurs et l'acculturation des consommateurs fortunés.",
         "Mes travaux paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing, l'Academy of Management Journal, le Journal of the Academy of Marketing Science et l'International Journal of Research in Marketing, où ils ont figuré parmi les articles les plus cités et les plus téléchargés. Je les ai présentés au Forum économique mondial et aux congrès de l'Association for Consumer Research, de l'European Association for Consumer Research, de Consumer Culture Theory et de l'American Marketing Association. J'ai reçu près de 1 M$ en financement de recherche, principalement du Conseil de recherches en sciences humaines et du Fonds de recherche du Québec – Société et culture.",
+        "Je siège aux comités de rédaction du Journal of Consumer Research, du Journal of Marketing Research, du Journal of Consumer Psychology, de Marketing Theory, de l'European Journal of Marketing, du Journal of Advertising Research et de Recherche et Applications en Marketing.",
     ],
 }
 
@@ -271,9 +273,28 @@ COURSES = [
 ]
 
 TEXTBOOKS = [
-    ("Digital Marketing Strategy", 2021, "https://opentextbooks.concordia.ca/digitalmarketing/"),
-    ("Artificial Intelligence and Marketing", 2024, "#"),  # taken down; version to be offered
+    dict(title="Digital Marketing Strategy", year=2021, link="https://opentextbooks.concordia.ca/digitalmarketing/", action="read",
+         cover="https://opentextbooks.concordia.ca/digitalmarketing/wp-content/uploads/sites/41/2022/11/DMBCover_Photo-1-scaled-1-350x525.jpg",
+         blurb={"en": "A free, open textbook that gives students a framework for planning and running marketing online. More than 3,000 students used it across universities in 2024, with companion podcasts, videos and transcripts.",
+                "fr": "Un manuel libre et gratuit qui donne aux étudiants un cadre pour planifier et mener le marketing en ligne. Plus de 3 000 étudiants l'ont utilisé dans plusieurs universités en 2024, avec balados, vidéos et transcriptions."}),
+    dict(title="Artificial Intelligence and Marketing", year=2024, link="/assets/ai-and-marketing.pdf", action="download",
+         cover="",  # TODO: first page of the PDF once the file is copied
+         blurb={"en": "A free textbook on how artificial intelligence works and how marketers can use it, written for business students and managers.",
+                "fr": "Un manuel gratuit sur le fonctionnement de l'intelligence artificielle et son usage en marketing, écrit pour les étudiants en gestion et les gestionnaires."}),
 ]
+
+TEACHING = {  # adapted from the teaching statement
+    "en": [
+        "I teach marketing as a practice. My courses build real-world marketing skills while asking students to think critically about the social and cultural side of consumer behaviour: what we market, why, and with what consequences.",
+        "Students prepare before class through readings, podcasts, videos and transcripts, so that class time goes to application. Each session opens with questions that check understanding, then moves to exercises built on real and fictional cases, such as analyzing digital campaigns, developing consumer personas and building content strategies. In my digital marketing course, students create websites and campaigns for fictional product pre-launches; some have gained thousands of social media followers or press attention.",
+        "I collect feedback during and after each semester, and I tell students how their input changed the course.",
+    ],
+    "fr": [
+        "J'enseigne le marketing comme une pratique. Mes cours développent des compétences concrètes tout en amenant les étudiants à réfléchir de façon critique aux dimensions sociales et culturelles du comportement des consommateurs : ce que l'on met en marché, pourquoi, et avec quelles conséquences.",
+        "Les étudiants se préparent avant le cours grâce à des lectures, des balados, des vidéos et des transcriptions, afin que le temps en classe serve à l'application. Chaque séance s'ouvre sur des questions qui vérifient la compréhension, puis passe à des exercices fondés sur des cas réels et fictifs : analyser des campagnes numériques, développer des personas, bâtir des stratégies de contenu. Dans mon cours de marketing numérique, les étudiants créent des sites web et des campagnes pour le prélancement de produits fictifs; certains ont attiré des milliers d'abonnés ou l'attention des médias.",
+        "Je recueille de la rétroaction pendant et après chaque session, et j'explique aux étudiants comment leurs commentaires ont modifié le cours.",
+    ],
+}
 
 CASE = dict(title="The AAK Kolo Nafaso Programme: Securing an Alternative Shea Supply Chain",
             venue="INSEAD Case Studies", year=2020,
@@ -290,8 +311,6 @@ BACKGROUND = [
                    "fr": "Postes invités : SKEMA (Lille), Université de Melbourne"}),
     ("2016", {"en": "PhD in Marketing, Schulich School of Business, York University",
               "fr": "Ph. D. en marketing, Schulich School of Business, Université York"}),
-    ("2010", {"en": "MSc in Marketing, HEC Montréal", "fr": "M. Sc. en marketing, HEC Montréal"}),
-    ("2006", {"en": "BBA, Université Laval", "fr": "B.A.A., Université Laval"}),
 ]
 
 BOARDS = ["Journal of Consumer Research", "Journal of Marketing Research", "Journal of Consumer Psychology",

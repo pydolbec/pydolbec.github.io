@@ -4,7 +4,7 @@ Run from anywhere: python3 _build/build.py
 """
 import html, os, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT
+from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = ["en", "fr"]
@@ -144,7 +144,7 @@ def about(lang):
     title = dict(t["nav"])["about"]
     body = f"""<div class="wrap"><div class="about">
 <div><div class="ph portrait">[{t['portrait']}]</div>
-<div class="facts"><b>{e(t['hero_p3'])}</b><br>{'Editorial review boards' if lang == 'en' else 'Comités de rédaction'}: {e(boards)}</div></div>
+<div class="facts"><b>{e(t['hero_p3'])}</b></div></div>
 <div><h1 class="page" style="margin-top:0">{e(title)}</h1>
 {"".join(f"<p>{e(x)}</p>" for x in ABOUT[lang])}
 <h2>{t['background']}</h2>
@@ -204,25 +204,30 @@ def media(lang):
 def teaching(lang):
     t = UI[lang]
     books = ""
-    for name, yr, link in TEXTBOOKS:
-        books += f"""<div class="book"><div class="ph">[Cover]</div><div><h3>{e(name)}</h3>{tbd(lang)}
-<a class="btn o" href="{e(link)}">{t['read_free']}</a></div></div>"""
+    for bk in TEXTBOOKS:
+        cover = (f'<img src="{e(bk["cover"])}" alt="Cover of {e(bk["title"])}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line)">'
+                 if bk["cover"] else '<div class="ph">[Cover]</div>')
+        label = t["read_free"] if bk["action"] == "read" else t["download_pdf"]
+        dl = ' download' if bk["action"] == "download" else ''
+        missing = bk["link"].startswith("/") and not os.path.exists(os.path.join(ROOT, bk["link"].lstrip("/")))
+        button = "" if missing else f'<a class="btn o" href="{e(bk["link"])}"{dl}>{label}</a>'
+        books += f"""<div class="book">{cover}<div><div class="kicker">{bk['year']}</div><h3 style="margin-top:6px">{e(bk['title'])}</h3>
+<p style="color:#333;font-size:16px">{e(bk['blurb'][lang])}</p>
+{button}</div></div>"""
     courses = "".join(f'<div class="row course"><span class="y" style="text-align:left">{c}</span><span>{e(n)}</span><span class="v">{lv}</span></div>' for c, n, lv in COURSES)
     title = dict(t["nav"])["teaching"]
+    intro = "".join(f"<p>{e(x)}</p>" for x in TEACHING[lang])
     body = f"""<div class="wrap">
 <h1 class="page">{e(title)}</h1>
-{tbd(lang)}
+<div style="max-width:760px">{intro}</div>
 <h2>{t['textbooks']}</h2>
 <div class="books">{books}</div>
 <h2>{t['courses']}</h2>
 {courses}
-<h2>{t['mba_exec']}</h2>
-{tbd(lang)}
 <h2>{t['cases']}</h2>
 <div class="case"><div class="ph">[Cover]</div><div><div class="kicker">{CASE['venue']} · {CASE['year']}</div>
-<h3 style="margin-top:8px">{e(CASE['title'])}</h3><div style="font-size:15px;color:var(--muted)">{e(CASE['authors'])}</div></div></div>
-<h2>{t['supervision']}</h2>
-{tbd(lang)}
+<h3 style="margin-top:8px">{e(CASE['title'])}</h3><div style="font-size:15px;color:var(--muted)">{e(CASE['authors'])}</div>
+<p style="margin-top:16px"><a class="btn o" href="https://publishing.insead.edu/case/aak-kolo-nafaso">{t['view_case']}</a></p></div></div>
 </div>"""
     write(lang, "teaching", head(lang, title, t["hero_p3"], "teaching") + body + foot(lang))
 
