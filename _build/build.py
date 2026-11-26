@@ -205,7 +205,7 @@ def teaching(lang):
     t = UI[lang]
     books = ""
     for bk in TEXTBOOKS:
-        cover = (f'<img src="{e(bk["cover"])}" alt="Cover of {e(bk["title"])}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line)">'
+        cover = (f'<img src="{e(bk["cover"])}" alt="Cover of {e(bk["title"])}" loading="lazy" style="width:100%;height:auto;border:1px solid var(--line)">'
                  if bk["cover"] else '<div class="ph">[Cover]</div>')
         label = t["read_free"] if bk["action"] == "read" else t["download_pdf"]
         dl = ' download' if bk["action"] == "download" else ''

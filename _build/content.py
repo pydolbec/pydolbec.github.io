@@ -278,7 +278,7 @@ TEXTBOOKS = [
          blurb={"en": "A free, open textbook that gives students a framework for planning and running marketing online. More than 3,000 students used it across universities in 2024, with companion podcasts, videos and transcripts.",
                 "fr": "Un manuel libre et gratuit qui donne aux étudiants un cadre pour planifier et mener le marketing en ligne. Plus de 3 000 étudiants l'ont utilisé dans plusieurs universités en 2024, avec balados, vidéos et transcriptions."}),
     dict(title="Artificial Intelligence and Marketing", year=2024, link="/assets/ai-and-marketing.pdf", action="download",
-         cover="/assets/img/ai-cover.jpg",  # title page; the PDF has no cover image
+         cover="/assets/img/ai-cover.webp",
          blurb={"en": "A free textbook on how artificial intelligence works and how marketers can use it, written for business students and managers.",
                 "fr": "Un manuel gratuit sur le fonctionnement de l'intelligence artificielle et son usage en marketing, écrit pour les étudiants en gestion et les gestionnaires."}),
 ]
