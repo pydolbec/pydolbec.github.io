@@ -321,7 +321,7 @@ def summary_page(p, lang):
 <header class="summary-head">
 <div class="kicker" style="margin-top:28px">{kind} · {e(p['venue'])}, {year_label(p, lang)}</div>
 <h1>{e(p['title'])}</h1>
-<div style="color:var(--muted)">{e(p['authors'])}</div>
+<div style="color:var(--muted)">{e(p['authors'] if lang == 'en' else p['authors'].replace(' and ', ' et '))}</div>
 {standfirst}
 </header>
 <div class="summary-grid">
@@ -338,7 +338,7 @@ def summary_page(p, lang):
 <a class="more" style="margin:48px 0 0" href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <div class="kicker" style="margin-top:28px">{kind} · {e(p['venue'])}, {year_label(p, lang)}</div>
 <h1>{e(p['title'])}</h1>
-<div style="color:var(--muted)">{e(p['authors'])}</div>
+<div style="color:var(--muted)">{e(p['authors'] if lang == 'en' else p['authors'].replace(' and ', ' et '))}</div>
 <h2 style="font-size:24px;margin-top:48px">{t['summary']}</h2>
 {tbd(lang)}{tbd(lang)}
 <div class="figure"><div class="ph">[{t['fig_tbd']}]</div><div class="cap">[Caption · Source]</div></div>
