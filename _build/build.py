@@ -55,9 +55,12 @@ def head(lang, title, desc, path):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{full}</title>
 <meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{SITE['domain']}{url(lang, path)}">
 <link rel="alternate" hreflang="en" href="{SITE['domain']}{url('en', path)}">
 <link rel="alternate" hreflang="fr" href="{SITE['domain']}{url('fr', path)}">
+<link rel="alternate" hreflang="x-default" href="{SITE['domain']}{url('en', path)}">
 <meta property="og:title" content="{full}">
+<meta property="og:url" content="{SITE['domain']}{url(lang, path)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -350,6 +353,31 @@ def summary_page(p, lang):
     write(lang, path, head(lang, p["title"], p["title"], path) + body + foot(lang))
 
 
+def seo_files():
+    """Write sitemap.xml (EN pages with FR alternates) and robots.txt."""
+    paths = []
+    for dirpath, _, files in os.walk(ROOT):
+        rel = os.path.relpath(dirpath, ROOT).replace(os.sep, "/")
+        if rel == ".":
+            rel = ""
+        if "index.html" not in files or rel.startswith(("fr", "_", ".", "assets")):
+            continue
+        paths.append(rel)
+    entries = []
+    for p in sorted(paths):
+        alts = "".join(
+            f'\n    <xhtml:link rel="alternate" hreflang="{h}" href="{SITE["domain"]}{url(l, p)}"/>'
+            for h, l in (("en", "en"), ("fr", "fr"), ("x-default", "en")))
+        for lang in LANGS:
+            entries.append(f'  <url>\n    <loc>{SITE["domain"]}{url(lang, p)}</loc>{alts}\n  </url>')
+    with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+                'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(entries) + "\n</urlset>\n")
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(f"User-agent: *\nDisallow: /_build/\n\nSitemap: {SITE['domain']}/sitemap.xml\n")
+
+
 def main():
     fr_dir = os.path.join(ROOT, "fr")
     if os.path.isdir(fr_dir):
@@ -365,6 +393,7 @@ def main():
         for p in others():
             summary_page(p, lang)
     open(os.path.join(ROOT, ".nojekyll"), "w").close()
+    seo_files()
     print("built", sum(len(fs) for _, _, fs in os.walk(ROOT) if "index.html" in fs))
 
 
