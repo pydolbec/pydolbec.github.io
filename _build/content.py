@@ -140,7 +140,7 @@ PUBS = [
          mgr={"en": "how a personal brand turns attention into revenue.", "fr": "comment une marque personnelle transforme l'attention en revenus."}),
     dict(slug="world-cup", featured=True, kind="article", year=2025,
          title="Temporary Regulations and Institutional Change: Insights from the Brazilian World Cup Experience",
-         authors="Alex Bitektine, Pierre-Yann Dolbec, Michele Martins, and Stijn Kruidener", venue="Academy of Management Journal", details="68(6), 1168–1206", doi="10.5465/amj.2022.1135",
+         authors="Alex Bitektine, Pierre-Yann Dolbec, Michele Martins, and Stijn Kruidenier", venue="Academy of Management Journal", details="68(6), 1168–1206", doi="10.5465/amj.2022.1135",
          tag={"en": "Regulation", "fr": "Réglementation"},
          q={"en": "How a World Cup rewrote a country's rules", "fr": "Comment une Coupe du monde a réécrit les règles d'un pays"},
          mgr={"en": "what temporary rules mean for firms planning around big events.", "fr": "ce que les règles temporaires signifient pour les entreprises qui planifient autour de grands événements."}),
