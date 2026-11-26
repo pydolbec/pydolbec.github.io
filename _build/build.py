@@ -37,7 +37,7 @@ def pub_link(p):
     return f"https://doi.org/{p['doi']}" if p["doi"] else p.get("url", "#")
 
 
-def head(lang, title, desc, path):
+def head(lang, title, desc, path, img=None):
     other = "fr" if lang == "en" else "en"
     t = UI[lang]
     nav = "".join(
@@ -63,6 +63,10 @@ def head(lang, title, desc, path):
 <meta property="og:url" content="{SITE['domain']}{url(lang, path)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
+<meta property="og:image" content="{SITE['domain']}{img or ('/assets/img/og/default.jpg' if lang == 'en' else '/assets/img/og/default-fr.jpg')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -279,7 +283,7 @@ def featured_page(p, lang, nxt):
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
 </div></article>"""
-        write(lang, path, head(lang, p["q"][lang], p["title"], path) + body + foot(lang))
+        write(lang, path, head(lang, p["q"][lang], p["title"], path, "/assets/img/og/" + p["slug"] + ".jpg") + body + foot(lang))
         return
     body = f"""<div class="narrow essay-head">
 <a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
@@ -303,7 +307,7 @@ def featured_page(p, lang, nxt):
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
 </div>"""
-    write(lang, path, head(lang, p["q"][lang], p["title"], path) + body + foot(lang))
+    write(lang, path, head(lang, p["q"][lang], p["title"], path, "/assets/img/og/" + p["slug"] + ".jpg") + body + foot(lang))
 
 
 def summary_page(p, lang):
