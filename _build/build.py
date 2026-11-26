@@ -107,6 +107,32 @@ def others():
     return sorted([p for p in PUBS if not p.get("featured")], key=lambda p: -(p["year"] or 9999))
 
 
+def take_div(html_, cls):
+    """Remove the first <div class="cls"> block (balanced) and return (rest, block)."""
+    start = html_.find(f'<div class="{cls}">')
+    if start < 0:
+        return html_, ""
+    i, depth = start, 0
+    while i < len(html_):
+        if html_.startswith("<div", i):
+            depth += 1
+        elif html_.startswith("</div>", i):
+            depth -= 1
+            if depth == 0:
+                end = i + len("</div>")
+                return html_[:start] + html_[end:], html_[start:end]
+        i += 1
+    return html_, ""
+
+
+def take_tag(html_, tag, cls):
+    start = html_.find(f'<{tag} class="{cls}">')
+    if start < 0:
+        return html_, ""
+    end = html_.find(f"</{tag}>", start) + len(f"</{tag}>")
+    return html_[:start] + html_[end:], html_[start:end]
+
+
 # ---------- pages ----------
 
 def home(lang):
@@ -283,20 +309,25 @@ def summary_page(p, lang):
     kind = t[p["kind"]]
     frag = os.path.join(os.path.dirname(__file__), "summaries", f"{p['slug']}.{lang}.html")
     if os.path.exists(frag):
-        body = f"""<div class="wrap"><div class="paper">
-<article class="essay">
+        html_ = open(frag, encoding="utf-8").read()
+        html_, inshort = take_div(html_, "inshort")
+        html_, mgr = take_div(html_, "mgrbox")
+        html_, standfirst = take_tag(html_, "p", "standfirst")
+        body = f"""<div class="wrap summary-page">
 <a class="more" style="margin:48px 0 0" href="{url(lang, 'research')}">{t['all_research_back']}</a>
+<header class="summary-head">
 <div class="kicker" style="margin-top:28px">{kind} · {e(p['venue'])}, {year_label(p, lang)}</div>
 <h1>{e(p['title'])}</h1>
 <div style="color:var(--muted)">{e(p['authors'])}</div>
-{open(frag, encoding="utf-8").read()}
-</article>
-<aside class="side"><div class="panel">
-<div class="kicker">{t['the_paper']}</div>
-<p style="font-size:15px;color:#333">{citation(p, lang)}</p>
-<a class="btn" href="{pub_link(p)}">{t['read_publisher']}</a>
-</div></aside>
-</div></div>"""
+{standfirst}
+</header>
+<div class="summary-grid">
+<article class="essay summary-main">{html_}</article>
+<aside class="summary-side">{inshort}{mgr}</aside>
+</div>
+<div class="panel paper-cta"><div><div class="kicker">{t['the_paper']}</div><p>{citation(p, lang)}</p></div>
+<a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{t['read_publisher']}</a></div>
+</div>"""
         write(lang, path, head(lang, p["title"], p["title"], path) + body + foot(lang))
         return
     body = f"""<div class="wrap"><div class="paper">
