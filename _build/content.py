@@ -93,7 +93,7 @@ UI = {
         "nav": [("about", "À propos"), ("research", "Recherche"), ("media", "Médias"), ("teaching", "Enseignement")],
         "hero_small": "J'étudie comment",
         "hero_big": "Les marchés sont créés.",
-        "hero_p2": "Le streetwear dans le luxe, le café de spécialité, l'économie des créateurs : chacun est devenu un marché parce que des gens l'ont bâti. Ma recherche montre qui les a bâtis, et comment.",
+        "hero_p2": "Le streetwear dans le luxe, le café de spécialité, l'économie des créateurs : chacun est devenu un marché parce que des gens l'ont bâti. Ma recherche montre qui les crée, et comment.",
         "hero_p3": "Professeur agrégé de marketing, École de gestion John-Molson, Université Concordia",
         "for_managers": "Pour les gestionnaires :",
         "read_short": "Lire la version courte →",
