@@ -174,3 +174,7 @@ a.row:hover .t{text-decoration:underline}
 .mech .ill.has-photo .photo{height:100%;display:flex;flex-direction:column}
 .mech .ill.has-photo img{flex:1;min-height:300px;object-fit:cover}
 .mech .ill.has-photo .credit{margin:0;padding:8px 14px 10px}
+.photo .credit a{color:inherit}
+.photo.pair .pair-imgs{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.mech .ill.has-photo .photo.pair img{min-height:300px;height:100%;object-fit:contain;background:#fff;padding:14px}
+.mech .ill.has-photo .photo.pair img.fill{object-fit:cover;padding:0}
