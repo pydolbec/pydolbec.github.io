@@ -204,3 +204,13 @@ img.cardimg,.feat4 img.cardimg{aspect-ratio:3/2;height:auto;object-fit:cover}
 .paper-cta p{margin:8px 0 0;color:#333;font-size:15px;max-width:760px}
 @media (max-width:900px){.summary-grid{grid-template-columns:1fr;gap:32px}.summary-side{order:-1}}
 .summary-head .standfirst{margin-top:24px}
+/* data tables inside figures */
+.ftable{width:100%;border-collapse:collapse;font-size:15px;line-height:1.4}
+.ftable th,.ftable td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+.ftable thead th{background:#e9ebef;font-weight:700;color:var(--ink)}
+.ftable thead th:nth-child(3){background:#c9d2f2}
+.ftable thead th.hi{background:var(--accent);color:#fff}
+.ftable thead th:first-child{background:none}
+.ftable tbody th{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:#555;width:22%}
+.figure:has(.ftable){overflow-x:auto}
+@media (max-width:640px){.ftable{font-size:14px;min-width:560px}}
