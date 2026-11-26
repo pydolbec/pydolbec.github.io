@@ -137,6 +137,7 @@ a.row:hover .t{text-decoration:underline}
 /* essay pages */
 .essay p{line-height:1.65}
 .essay q{quotes:"\201C" "\201D"}
+html[lang=fr] .essay q{quotes:"«\00a0" "\00a0»" "“" "”"}
 .standfirst{font-size:22px;line-height:1.45;color:#333;font-weight:500;margin:0}
 .essay .meta{margin-bottom:8px}
 .hero-img{display:flex;align-items:flex-end}
