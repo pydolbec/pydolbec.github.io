@@ -227,7 +227,7 @@ def teaching(lang):
 <h2>{t['courses']}</h2>
 {courses}
 <h2>{t['cases']}</h2>
-<div class="case"><div class="ph">[Cover]</div><div><div class="kicker">{CASE['venue']} · {CASE['year']}</div>
+<div class="case"><img src="/assets/img/kolo-nafaso.webp" alt="Two women carrying basins of shea nuts on their heads" loading="lazy" style="width:100%;height:auto;border:1px solid var(--line)"><div><div class="kicker">{CASE['venue']} · {CASE['year']}</div>
 <h3 style="margin-top:8px">{e(CASE['title'])}</h3><div style="font-size:15px;color:var(--muted)">{e(CASE['authors'])}</div>
 <p style="margin-top:16px"><a class="btn o" href="https://publishing.insead.edu/case/aak-kolo-nafaso">{t['view_case']}</a></p></div></div>
 </div>"""
