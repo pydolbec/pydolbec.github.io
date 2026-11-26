@@ -21,7 +21,7 @@ HOME_SEO = {
            "desc": "Pierre-Yann Dolbec is Associate Professor of Marketing at Concordia University's John Molson School of Business. He studies how markets are made, from streetwear and craft coffee to the creator economy."},
     "fr": {"title": "Professeur agrégé de marketing, Université Concordia",
            "job": "Professeur agrégé de marketing",
-           "desc": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia. Il étudie comment les marchés se construisent, du streetwear au café de spécialité et à l'économie des créateurs."},
+           "desc": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia. Il étudie comment les marchés sont créés, du streetwear au café de spécialité et à l'économie des créateurs."},
 }
 
 PAGE_DESC = {
@@ -33,7 +33,7 @@ PAGE_DESC = {
     },
     "fr": {
         "about": "À propos de Pierre-Yann Dolbec, professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia : recherche, parcours, comités de lecture et CV.",
-        "research": "Recherche de Pierre-Yann Dolbec sur la construction des marchés : streetwear et mode de luxe, café artisanal, économie des créateurs, réglementation et méthodes qualitatives.",
+        "research": "Recherche de Pierre-Yann Dolbec sur la création des marchés : streetwear et mode de luxe, café artisanal, économie des créateurs, réglementation et méthodes qualitatives.",
         "media": "Ressources médias sur Pierre-Yann Dolbec, professeur de marketing à l'Université Concordia : sujets d'entrevue, biographies et couverture de presse. Entrevues en français et en anglais.",
         "teaching": "Enseignement de Pierre-Yann Dolbec à l'Université Concordia : cours, manuels libres sur le marketing numérique et sur l'IA et le marketing, et un cas pédagogique.",
     },
@@ -92,7 +92,7 @@ UI = {
     "fr": {
         "nav": [("about", "À propos"), ("research", "Recherche"), ("media", "Médias"), ("teaching", "Enseignement")],
         "hero_small": "J'étudie comment",
-        "hero_big": "Les marchés se construisent.",
+        "hero_big": "Les marchés sont créés.",
         "hero_p2": "Le streetwear dans le luxe, le café de spécialité, l'économie des créateurs : chacun est devenu un marché parce que des gens l'ont bâti. Ma recherche montre qui les a bâtis, et comment.",
         "hero_p3": "Professeur agrégé de marketing, École de gestion John-Molson, Université Concordia",
         "for_managers": "Pour les gestionnaires :",
@@ -249,8 +249,8 @@ BIOS = {
         "long": "Pierre-Yann Dolbec is Associate Professor of Marketing at the John Molson School of Business, Concordia University, in Montréal. He studies how markets are made and change, and how companies and consumers deal with the complexity this creates. His work covers markets for fashion and streetwear, coffee, sneakers, music, education and platform services such as Uber and Airbnb, as well as the creator economy. It appears in the Journal of Consumer Research, Journal of Marketing Research, Journal of Marketing and Academy of Management Journal, and has been presented at the World Economic Forum. He has received close to $1M in research funding and sits on the editorial review boards of six journals, including the Journal of Consumer Research and the Journal of Consumer Psychology. His work has been covered by CBC, Radio-Canada, CTV News, Global TV, Channel News Asia, Le Devoir, Les Affaires and the National Post. He gives interviews in English and French.",
     },
     "fr": {
-        "short": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés se construisent et se transforment, du streetwear et du café aux créateurs de contenu et aux plateformes. Ses recherches paraissent dans le Journal of Consumer Research, le Journal of Marketing Research et le Journal of Marketing.",
-        "long": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés se construisent et se transforment, et comment les entreprises et les consommateurs gèrent la complexité qui en découle. Ses travaux portent sur les marchés de la mode et du streetwear, du café, des sneakers, de la musique, de l'éducation et des plateformes comme Uber et Airbnb, ainsi que sur l'économie des créateurs. Ils paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing et l'Academy of Management Journal, et ont été présentés au Forum économique mondial. Il a reçu près de 1 M$ en financement de recherche et siège aux comités de rédaction de six revues, dont le Journal of Consumer Research et le Journal of Consumer Psychology. Ses travaux ont été couverts par CBC, Radio-Canada, CTV, Global TV, Channel News Asia, Le Devoir, Les Affaires et le National Post. Il accorde des entrevues en français et en anglais.",
+        "short": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés sont créés et se transforment, du streetwear et du café aux créateurs de contenu et aux plateformes. Ses recherches paraissent dans le Journal of Consumer Research, le Journal of Marketing Research et le Journal of Marketing.",
+        "long": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés sont créés et se transforment, et comment les entreprises et les consommateurs gèrent la complexité qui en découle. Ses travaux portent sur les marchés de la mode et du streetwear, du café, des sneakers, de la musique, de l'éducation et des plateformes comme Uber et Airbnb, ainsi que sur l'économie des créateurs. Ils paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing et l'Academy of Management Journal, et ont été présentés au Forum économique mondial. Il a reçu près de 1 M$ en financement de recherche et siège aux comités de rédaction de six revues, dont le Journal of Consumer Research et le Journal of Consumer Psychology. Ses travaux ont été couverts par CBC, Radio-Canada, CTV, Global TV, Channel News Asia, Le Devoir, Les Affaires et le National Post. Il accorde des entrevues en français et en anglais.",
     },
 }
 
