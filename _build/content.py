@@ -171,10 +171,10 @@ PUBS = [
     # --- summaries ---
     dict(slug="fallacy-of-facility", kind="article", year=2026,
          title="The Fallacy of Facility: Concerns Regarding the (Mis)Use of GGT",
-         authors="Pierre-Yann Dolbec, Eileen Fischer, and Andrew Smith", venue="Journal of Consumer Psychology", details="", doi="10.1002/jcpy.70037"),
-    dict(slug="sharing-and-hiding", kind="article", year=2025,
+         authors="Pierre-Yann Dolbec, Eileen Fischer, and Andrew Smith", venue="Journal of Consumer Psychology", details="36(4), 521–529", doi="10.1002/jcpy.70037"),
+    dict(slug="sharing-and-hiding", kind="article", year=2026,
          title="Between Sharing and Hiding: How Consumers Shade Knowledge",
-         authors="Aron Darmody, Pierre-Yann Dolbec, Mujde Yuksel, and Meera Venkatraman", venue="International Journal of Research in Marketing", details="", doi="10.1016/j.ijresmar.2025.08.001"),
+         authors="Aron Darmody, Pierre-Yann Dolbec, Mujde Yuksel, and Meera Venkatraman", venue="International Journal of Research in Marketing", details="43(3), 637–655", doi="10.1016/j.ijresmar.2025.08.001"),
     dict(slug="hybrid-branding", kind="article", year=2025,
          title="Entering a Complex Market: How Hybrid Branding Helps New Brands Create Distinctive and Resonant Identities",
          authors="Nicole Gorman and Pierre-Yann Dolbec", venue="Journal of the Academy of Marketing Science", details="53, 1208–1229", doi="10.1007/s11747-024-01072-3"),
