@@ -37,7 +37,7 @@ def pub_link(p):
     return f"https://doi.org/{p['doi']}" if p["doi"] else p.get("url", "#")
 
 
-def head(lang, title, desc, path, img=None):
+def head(lang, title, desc, path, img=None, ld=""):
     other = "fr" if lang == "en" else "en"
     t = UI[lang]
     nav = "".join(
@@ -48,7 +48,6 @@ def head(lang, title, desc, path, img=None):
     else:
         toggle = f'<a href="{url("en", path)}" hreflang="en" lang="en">EN</a><span class="cur">FR</span>'
     full = f"{e(title)} · {SITE['name']}" if title != SITE["name"] else SITE["name"]
-    ld = ""
     if path == "":
         role = HOME_SEO[lang]
         full = f"{SITE['name']} · {role['title']}"
@@ -85,6 +84,8 @@ def head(lang, title, desc, path, img=None):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -114,8 +115,41 @@ def foot(lang):
 def write(lang, path, doc):
     out = os.path.join(ROOT, "" if lang == "en" else "fr", path.strip("/"), "index.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
+    doc = fix_imgs(doc)
     with open(out, "w", encoding="utf-8") as f:
         f.write(doc)
+
+
+_DIMS = {}
+
+
+def fix_imgs(doc):
+    """Give local images width/height (prevents layout shift); load the hero image first."""
+    from PIL import Image
+
+    def dims(src):
+        if src not in _DIMS:
+            fp = os.path.join(ROOT, src.split("?")[0].lstrip("/"))
+            _DIMS[src] = Image.open(fp).size if os.path.exists(fp) else None
+        return _DIMS[src]
+
+    def add(m):
+        tag = m.group(0)
+        src = re.search(r'src="([^"]+)"', tag)
+        if src and src.group(1).startswith("/") and "width=" not in tag:
+            d = dims(src.group(1))
+            if d:
+                tag = tag.replace("<img ", f'<img width="{d[0]}" height="{d[1]}" ', 1)
+        return tag
+    doc = re.sub(r"<img\b[^>]*>", add, doc)
+    m = re.search(r'class="hero-img[^"]*">(?:\s*<figure[^>]*>)?\s*<img\b[^>]*>', doc)
+    if m:
+        tag = m.group(0)
+        new = tag.replace(' loading="lazy"', "")
+        if "fetchpriority" not in new:
+            new = new.replace("<img ", '<img fetchpriority="high" ', 1)
+        doc = doc.replace(tag, new, 1)
+    return doc
 
 
 def pub_row(p, lang):
@@ -174,8 +208,7 @@ def home(lang):
     body = f"""<div class="wrap">
 <section class="hero">
 <div>
-<div class="s1">{e(t['hero_small'])}</div>
-<div class="big">{e(t['hero_big'])}</div>
+<h1 class="hero-h1"><span class="s1">{e(t['hero_small'])}</span> <span class="big">{e(t['hero_big'])}</span></h1>
 <p class="s2">{e(t['hero_p2'])}</p>
 <p class="s3"><b>{SITE['name']}</b> · {e(t['hero_p3'])}</p>
 </div>
@@ -285,6 +318,26 @@ def teaching(lang):
     write(lang, "teaching", head(lang, title, PAGE_DESC[lang]["teaching"], "teaching") + body + foot(lang))
 
 
+def article_ld(p, lang):
+    """schema.org ScholarlyArticle describing the paper a research page presents."""
+    names = [a.strip() for a in re.split(r",\s*(?:and\s+)?|\s+and\s+", p["authors"]) if a.strip()]
+    me = {"@type": "Person", "name": SITE["name"], "url": SITE["domain"] + "/", "sameAs": list(SITE["links"].values())}
+    art = {
+        "@context": "https://schema.org",
+        "@type": "Chapter" if p.get("kind") == "chapter" else "ScholarlyArticle",
+        "headline": p["title"][:110], "name": p["title"],
+        "author": [me if n == SITE["name"] else {"@type": "Person", "name": n} for n in names],
+        "datePublished": str(p["year"]), "inLanguage": "en",
+        "isPartOf": {"@type": "Periodical" if p.get("kind") != "chapter" else "Book", "name": p["venue"]},
+        "url": pub_link(p),
+        "mainEntityOfPage": SITE["domain"] + url(lang, "research/" + p["slug"]),
+    }
+    if p.get("doi"):
+        art["identifier"] = {"@type": "PropertyValue", "propertyID": "DOI", "value": p["doi"]}
+        art["sameAs"] = "https://doi.org/" + p["doi"]
+    return '<script type="application/ld+json">' + json.dumps(art, ensure_ascii=False) + "</script>\n"
+
+
 def paper_desc(p, lang, frag_html):
     """Search description for a research page: who wrote it, where, then the standfirst."""
     names = [a.strip() for a in re.split(r",\s*(?:and\s+)?|\s+and\s+", p["authors"]) if a.strip()]
@@ -316,7 +369,7 @@ def featured_page(p, lang, nxt):
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
 </div></article>"""
-        write(lang, path, head(lang, p["q"][lang], paper_desc(p, lang, essay), path, "/assets/img/og/" + p["slug"] + ".jpg") + body + foot(lang))
+        write(lang, path, head(lang, p["q"][lang], paper_desc(p, lang, essay), path, "/assets/img/og/" + p["slug"] + ".jpg", ld=article_ld(p, lang)) + body + foot(lang))
         return
     body = f"""<div class="narrow essay-head">
 <a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
@@ -368,7 +421,7 @@ def summary_page(p, lang):
 <div class="panel paper-cta"><div><div class="kicker">{t['the_paper']}</div><p>{citation(p, lang)}</p></div>
 <a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{t['read_publisher']}</a></div>
 </div>"""
-        write(lang, path, head(lang, p["title"], paper_desc(p, lang, standfirst), path) + body + foot(lang))
+        write(lang, path, head(lang, p["title"] if lang == "en" else f"{t['summary']} : {p['title']}", paper_desc(p, lang, standfirst), path, ld=article_ld(p, lang)) + body + foot(lang))
         return
     body = f"""<div class="wrap"><div class="paper">
 <div>
