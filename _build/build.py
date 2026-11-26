@@ -7,6 +7,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import hashlib
+CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets/css/site.css"), "rb").read()).hexdigest()[:8]
 LANGS = ["en", "fr"]
 e = html.escape
 
@@ -61,7 +63,7 @@ def head(lang, title, desc, path):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 </head>
 <body>
 <header class="site-head"><div class="wrap">
