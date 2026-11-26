@@ -281,6 +281,24 @@ def summary_page(p, lang):
     t = UI[lang]
     path = "research/" + p["slug"]
     kind = t[p["kind"]]
+    frag = os.path.join(os.path.dirname(__file__), "summaries", f"{p['slug']}.{lang}.html")
+    if os.path.exists(frag):
+        body = f"""<div class="wrap"><div class="paper">
+<article class="essay">
+<a class="more" style="margin:48px 0 0" href="{url(lang, 'research')}">{t['all_research_back']}</a>
+<div class="kicker" style="margin-top:28px">{kind} · {e(p['venue'])}, {year_label(p, lang)}</div>
+<h1>{e(p['title'])}</h1>
+<div style="color:var(--muted)">{e(p['authors'])}</div>
+{open(frag, encoding="utf-8").read()}
+</article>
+<aside class="side"><div class="panel">
+<div class="kicker">{t['the_paper']}</div>
+<p style="font-size:15px;color:#333">{citation(p, lang)}</p>
+<a class="btn" href="{pub_link(p)}">{t['read_publisher']}</a>
+</div></aside>
+</div></div>"""
+        write(lang, path, head(lang, p["title"], p["title"], path) + body + foot(lang))
+        return
     body = f"""<div class="wrap"><div class="paper">
 <div>
 <a class="more" style="margin:48px 0 0" href="{url(lang, 'research')}">{t['all_research_back']}</a>
