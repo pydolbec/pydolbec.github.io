@@ -1,6 +1,6 @@
 # Handoff: writing paper summary pages for pydolbec.com
 
-Use this in a new session to write a batch of paper summary pages. These are the shorter pages linked from "More research" and the Research list. The four featured essays (streetwear, coffee, creators, world-cup) are done; read `_build/essays/streetwear.en.html` for tone and figure style, but summary pages are shorter and simpler.
+Use this in a new session to write a batch of paper summary pages. The approved model is `_build/summaries/online-reviewing.en.html`: match its length (about 750 words), structure and figure style. These are the shorter pages linked from "More research" and the Research list. The four featured essays (streetwear, coffee, creators, world-cup) are done; read `_build/essays/streetwear.en.html` for tone and figure style, but summary pages are shorter and simpler.
 
 ## Setup
 1. Attach the repo `pydolbec/pydolbec.github.io` and clone it. Pull before you start and before you push: other sessions write to the same repo.
@@ -25,7 +25,7 @@ Use this in a new session to write a batch of paper summary pages. These are the
 ## Output
 One HTML fragment per paper: `_build/summaries/<slug>.en.html`. `python3 _build/build.py` wraps it with the page header, the paper's full title, authors, a citation panel and the publisher link (all from `_build/content.py`; do not repeat them). Rebuild, commit and push to `main` after each paper, so a failed session loses at most one page.
 
-Fragment structure (1,000–1,500 words, plain HTML, same CSS classes as the essays):
+Fragment structure (about 750 words, plain HTML, same CSS classes as the essays):
 1. `<p class="standfirst">` — one or two sentences on what the paper shows, for a general reader.
 2. `<div class="inshort"><div class="kicker">In short</div>…</div>` — three short paragraphs: the question, what the authors did, what they found. Name the paper's central construct here, once, in plain language.
 3. Two to four sections with informative `<h2>` headings: the question and why it was open; the case or data, with the paper's numbers; the findings, in the nouns of the case; why it matters for scholars from other fields.
