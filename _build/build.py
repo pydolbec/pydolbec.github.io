@@ -247,7 +247,7 @@ def teaching(lang):
     intro = "".join(f"<p>{e(x)}</p>" for x in TEACHING[lang])
     body = f"""<div class="wrap">
 <h1 class="page">{e(title)}</h1>
-<div style="max-width:760px">{intro}</div>
+<div class="page-intro">{intro}</div>
 <h2>{t['textbooks']}</h2>
 <div class="books">{books}</div>
 <h2>{t['courses']}</h2>

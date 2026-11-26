@@ -214,3 +214,5 @@ img.cardimg,.feat4 img.cardimg{aspect-ratio:3/2;height:auto;object-fit:cover}
 .ftable tbody th{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:#555;width:22%}
 .figure:has(.ftable){overflow-x:auto}
 @media (max-width:640px){.ftable{font-size:14px;min-width:560px}}
+/* intro text runs the full content width */
+.wrap > p.intro,.page-intro{max-width:none}
