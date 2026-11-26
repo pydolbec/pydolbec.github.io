@@ -4,7 +4,7 @@ Run from anywhere: python3 _build/build.py
 """
 import html, os, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING
+from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = ["en", "fr"]
@@ -112,7 +112,7 @@ def home(lang):
     cards = ""
     for p in featured():
         cards += f"""<a class="card" href="{url(lang, 'research/' + p['slug'])}">
-<div class="ph">[{t['photo']}]</div>
+<img class="cardimg" src="{p['img']}" alt="" loading="lazy">
 <div class="kicker">{e(p['tag'][lang])} · {e(p['venue'])}, {p['year']}</div>
 <h3>{e(p['q'][lang])}</h3>
 <div class="mgr"><b>{t['for_managers']}</b> {e(p['mgr'][lang])}</div>
@@ -126,7 +126,7 @@ def home(lang):
 <p class="s2">{e(t['hero_p2'])}</p>
 <p class="s3"><b>{SITE['name']}</b> · {e(t['hero_p3'])}</p>
 </div>
-<div class="ph portrait">[{t['portrait']}]</div>
+<img class="portrait" src="/assets/img/portrait.webp" alt="Portrait of Pierre-Yann Dolbec" width="800" height="800">
 </section>
 <section class="cards">{cards}</section>
 <h2>{t['more_research']}</h2>
@@ -143,7 +143,7 @@ def about(lang):
     boards = ", ".join(BOARDS)
     title = dict(t["nav"])["about"]
     body = f"""<div class="wrap"><div class="about">
-<div><div class="ph portrait">[{t['portrait']}]</div>
+<div><img class="portrait" src="/assets/img/portrait.webp" alt="Portrait of Pierre-Yann Dolbec" width="800" height="800">
 <div class="facts"><b>{e(t['hero_p3'])}</b></div></div>
 <div><h1 class="page" style="margin-top:0">{e(title)}</h1>
 {"".join(f"<p>{e(x)}</p>" for x in ABOUT[lang])}
@@ -156,7 +156,7 @@ def about(lang):
 
 def research(lang):
     t = UI[lang]
-    feat = "".join(f"""<a class="card" href="{url(lang, 'research/' + p['slug'])}"><div class="ph">[{t['photo']}]</div>
+    feat = "".join(f"""<a class="card" href="{url(lang, 'research/' + p['slug'])}"><img class="cardimg" src="{p['img']}" alt="" loading="lazy">
 <div class="kicker" style="margin-top:12px">{e(p['tag'][lang])}</div><h3>{e(p['q'][lang])}</h3></a>""" for p in featured())
     chips = "".join(f'<button class="chip{" on" if k == "all" else ""}" data-f="{k}">{e(v)}</button>' for k, v in t["filters"])
     allp = sorted(PUBS, key=lambda p: -(p["year"] or 9999))
@@ -164,7 +164,7 @@ def research(lang):
     title = dict(t["nav"])["research"]
     body = f"""<div class="wrap">
 <h1 class="page">{e(title)}</h1>
-{tbd(lang)}
+<p class="intro">{e(RESEARCH_INTRO[lang])}</p>
 <h2>{t['featured']}</h2>
 <div class="feat4">{feat}</div>
 <h2>{t['all_pubs']}</h2>

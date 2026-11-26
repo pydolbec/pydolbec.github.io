@@ -120,25 +120,25 @@ UI = {
 # kind: article | chapter. doi: fill in. year None = in press.
 PUBS = [
     # --- featured ---
-    dict(slug="streetwear", featured=True, kind="article", year=2025,
+    dict(slug="streetwear", featured=True, img="/assets/img/streetwear/01-hero-off-white-spring-2016-runway.webp", kind="article", year=2025,
          title="From Streetwear to High Fashion: How Nonelite Producers Use Hybridization to Enter an Elite Category",
          authors="Pierre-Yann Dolbec", venue="Journal of Marketing Research", details="62(3), 543–564", doi="10.1177/00222437251314372",
          tag={"en": "Fashion", "fr": "Mode"},
          q={"en": "How did streetwear make it into high fashion?", "fr": "Comment le streetwear est-il entré dans la haute couture ?"},
          mgr={"en": "how a newcomer brand can enter a premium category.", "fr": "comment une nouvelle marque peut entrer dans une catégorie haut de gamme."}),
-    dict(slug="coffee", featured=True, kind="article", year=2022,
+    dict(slug="coffee", featured=True, img="/assets/img/coffee/01-hero-barista-brewing-pourover.webp", kind="article", year=2022,
          title="A Practice Perspective on Market Evolution: How Craft and Commercial Coffee Firms Expand Practices and Develop Markets",
          authors="Pierre-Yann Dolbec, Zeynep Arsel, and Aya Aboelenien", venue="Journal of Marketing", details="86(6), 50–69", doi="10.1177/00222429221093624",
          tag={"en": "Coffee", "fr": "Café"},
          q={"en": "How did craft coffee reshape the coffee market?", "fr": "Comment le café artisanal a-t-il transformé le marché du café ?"},
          mgr={"en": "how firms grow a market by expanding what customers do.", "fr": "comment les entreprises font croître un marché en élargissant ce que font les clients."}),
-    dict(slug="creators", featured=True, kind="article", year=2025,
+    dict(slug="creators", featured=True, img="/assets/img/creators/01-hero-creator-recording-at-a-desk.webp", kind="article", year=2025,
          title="From Fame and Followers to Fortune: How Person-Brands Capture Value in the Creator Economy",
          authors="Pierre-Yann Dolbec and Andrew Smith", venue="International Journal of Research in Marketing", details="42(4), 1264–1283", doi="", url="https://www.sciencedirect.com/science/article/pii/S0167811625000242",
          tag={"en": "Creators", "fr": "Créateurs"},
          q={"en": "How do creators turn followers into a fortune?", "fr": "Comment les créateurs transforment-ils leurs abonnés en revenus ?"},
          mgr={"en": "how a personal brand turns attention into revenue.", "fr": "comment une marque personnelle transforme l'attention en revenus."}),
-    dict(slug="world-cup", featured=True, kind="article", year=2025,
+    dict(slug="world-cup", featured=True, img="/assets/img/world-cup/01-hero-usa-fans-with-beer-at-ghana-match-2014.webp", kind="article", year=2025,
          title="Temporary Regulations and Institutional Change: Insights from the Brazilian World Cup Experience",
          authors="Alex Bitektine, Pierre-Yann Dolbec, Michele Martins, and Stijn Kruidenier", venue="Academy of Management Journal", details="68(6), 1168–1206", doi="10.5465/amj.2022.1135",
          tag={"en": "Regulation", "fr": "Réglementation"},
@@ -312,6 +312,11 @@ BACKGROUND = [
     ("2016", {"en": "PhD in Marketing, Schulich School of Business, York University",
               "fr": "Ph. D. en marketing, Schulich School of Business, Université York"}),
 ]
+
+RESEARCH_INTRO = {
+    "en": "I study how consumers and firms deal with market complexity, the conflicting expectations that institutions, technologies and social norms place on them, and how they use that complexity to shape markets. For scholars, my work explains how market categories form and change, how newcomers gain access to elite categories, and how new brands resolve cultural contradictions to build distinctive identities. For managers, it addresses core questions of strategy: how to enter a category, how to build a distinctive and resonant position, and how to shape the market you compete in. I build in-depth case studies from archives, interviews and fieldwork, often in partnership with the organizations involved, from Brazilian Jesuit schools to AAK's shea sourcing program in West Africa. The cases range from streetwear and craft coffee to the creator economy and the regulation of beer at Brazil's 2014 World Cup.",
+    "fr": "J'étudie comment les consommateurs et les entreprises composent avec la complexité des marchés, soit les attentes contradictoires que leur imposent les institutions, les technologies et les normes sociales, et comment ils utilisent cette complexité pour façonner les marchés. Pour les chercheurs, mes travaux expliquent comment les catégories de marché se forment et évoluent, comment de nouveaux venus accèdent aux catégories d'élite, et comment de nouvelles marques résolvent des contradictions culturelles pour se bâtir une identité distinctive. Pour les gestionnaires, ils répondent à des questions centrales de stratégie : comment entrer dans une catégorie, comment bâtir un positionnement distinctif qui résonne, et comment façonner le marché où l'on se fait concurrence. Je construis des études de cas approfondies à partir d'archives, d'entrevues et de travail de terrain, souvent en partenariat avec les organisations concernées, des écoles jésuites brésiliennes au programme d'approvisionnement en karité d'AAK en Afrique de l'Ouest. Les cas vont du streetwear et du café de spécialité à l'économie des créateurs et à la réglementation de la bière lors de la Coupe du monde 2014 au Brésil.",
+}
 
 BOARDS = ["Journal of Consumer Research", "Journal of Marketing Research", "Journal of Consumer Psychology",
           "Marketing Theory", "European Journal of Marketing", "Journal of Advertising Research",
