@@ -15,6 +15,15 @@ SITE = {
     },
 }
 
+HOME_SEO = {
+    "en": {"title": "Associate Professor of Marketing, Concordia University",
+           "job": "Associate Professor of Marketing",
+           "desc": "Pierre-Yann Dolbec is Associate Professor of Marketing at Concordia University's John Molson School of Business. He studies how markets are made, from streetwear and craft coffee to the creator economy."},
+    "fr": {"title": "Professeur agrégé de marketing, Université Concordia",
+           "job": "Professeur agrégé de marketing",
+           "desc": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia. Il étudie comment les marchés se construisent, du streetwear au café de spécialité et à l'économie des créateurs."},
+}
+
 UI = {
     "en": {
         "nav": [("about", "About"), ("research", "Research"), ("media", "Media"), ("teaching", "Teaching")],

@@ -2,9 +2,9 @@
 """Builds the static bilingual site into the repository root.
 Run from anywhere: python3 _build/build.py
 """
-import html, os, sys, shutil
+import html, json, os, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
+from content import HOME_SEO, SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import hashlib
@@ -48,6 +48,24 @@ def head(lang, title, desc, path, img=None):
     else:
         toggle = f'<a href="{url("en", path)}" hreflang="en" lang="en">EN</a><span class="cur">FR</span>'
     full = f"{e(title)} · {SITE['name']}" if title != SITE["name"] else SITE["name"]
+    ld = ""
+    if path == "":
+        role = HOME_SEO[lang]
+        full = f"{SITE['name']} · {role['title']}"
+        desc = role["desc"]
+        person = {
+            "@context": "https://schema.org", "@type": "Person",
+            "name": SITE["name"], "alternateName": ["PY Dolbec", "Pierre Yann Dolbec"],
+            "jobTitle": role["job"], "url": SITE["domain"] + "/",
+            "image": SITE["domain"] + "/assets/img/portrait.webp", "email": "mailto:" + SITE["email"],
+            "worksFor": {"@type": "CollegeOrUniversity", "name": "Concordia University",
+                         "department": {"@type": "Organization", "name": "John Molson School of Business"}},
+            "sameAs": list(SITE["links"].values()),
+            "knowsAbout": ["Marketing", "Market creation", "Consumer culture", "Streetwear and luxury fashion",
+                           "Specialty coffee", "Creator economy", "Institutional change"],
+        }
+        ld = '<script type="application/ld+json">' + json.dumps(person, ensure_ascii=False) + '</script>\n'
+
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -70,7 +88,7 @@ def head(lang, title, desc, path, img=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
+{ld}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 </head>
 <body>
 <header class="site-head"><div class="wrap">
