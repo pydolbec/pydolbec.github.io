@@ -1,5 +1,2 @@
-_site
-.sass-cache
-.sass-cache/
+__pycache__/
 .DS_Store
-.jekyll-cache
