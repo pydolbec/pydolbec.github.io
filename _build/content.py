@@ -24,6 +24,21 @@ HOME_SEO = {
            "desc": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia. Il étudie comment les marchés se construisent, du streetwear au café de spécialité et à l'économie des créateurs."},
 }
 
+PAGE_DESC = {
+    "en": {
+        "about": "About Pierre-Yann Dolbec, Associate Professor of Marketing at Concordia University's John Molson School of Business: his research, background, editorial boards and CV.",
+        "research": "Research by Pierre-Yann Dolbec on how markets are made: streetwear and luxury fashion, craft coffee, the creator economy, regulation and qualitative methods.",
+        "media": "Media resources for Pierre-Yann Dolbec, marketing professor at Concordia University: interview topics, bios and press coverage. Interviews in English and French.",
+        "teaching": "Teaching by Pierre-Yann Dolbec at Concordia University: courses, open textbooks on digital marketing and on AI and marketing, and a teaching case.",
+    },
+    "fr": {
+        "about": "À propos de Pierre-Yann Dolbec, professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia : recherche, parcours, comités de lecture et CV.",
+        "research": "Recherche de Pierre-Yann Dolbec sur la construction des marchés : streetwear et mode de luxe, café artisanal, économie des créateurs, réglementation et méthodes qualitatives.",
+        "media": "Ressources médias sur Pierre-Yann Dolbec, professeur de marketing à l'Université Concordia : sujets d'entrevue, biographies et couverture de presse. Entrevues en français et en anglais.",
+        "teaching": "Enseignement de Pierre-Yann Dolbec à l'Université Concordia : cours, manuels libres sur le marketing numérique et sur l'IA et le marketing, et un cas pédagogique.",
+    },
+}
+
 UI = {
     "en": {
         "nav": [("about", "About"), ("research", "Research"), ("media", "Media"), ("teaching", "Teaching")],

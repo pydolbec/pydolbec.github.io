@@ -2,9 +2,9 @@
 """Builds the static bilingual site into the repository root.
 Run from anywhere: python3 _build/build.py
 """
-import html, json, os, sys, shutil
+import html, json, os, re, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from content import HOME_SEO, SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
+from content import HOME_SEO, PAGE_DESC, SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 import hashlib
@@ -204,7 +204,7 @@ def about(lang):
 {bg}
 <p style="margin-top:40px"><a class="btn" href="/assets/cv.pdf">{t['cv']}</a></p>
 </div></div></div>"""
-    write(lang, "about", head(lang, title, t["hero_p3"], "about") + body + foot(lang))
+    write(lang, "about", head(lang, title, PAGE_DESC[lang]["about"], "about") + body + foot(lang))
 
 
 def research(lang):
@@ -230,7 +230,7 @@ document.querySelectorAll('#filters .chip').forEach(function(c){{c.classList.rem
 var f=b.dataset.f;document.querySelectorAll('#pubs .row').forEach(function(r){{r.style.display=(f==='all'||r.dataset.kind===f)?'':'none'}});
 }})}});
 </script>"""
-    write(lang, "research", head(lang, title, t["hero_small"] + " " + t["hero_big"].lower(), "research") + body + foot(lang))
+    write(lang, "research", head(lang, title, PAGE_DESC[lang]["research"], "research") + body + foot(lang))
 
 
 def media(lang):
@@ -251,7 +251,7 @@ def media(lang):
 <h2>{t['in_news']}</h2>
 {news}
 </div>"""
-    write(lang, "media", head(lang, title, t["media_intro"], "media") + body + foot(lang))
+    write(lang, "media", head(lang, title, PAGE_DESC[lang]["media"], "media") + body + foot(lang))
 
 
 def teaching(lang):
@@ -282,7 +282,22 @@ def teaching(lang):
 <h3 style="margin-top:8px">{e(CASE['title'])}</h3><div style="font-size:15px;color:var(--muted)">{e(CASE['authors'])}</div>
 <p style="margin-top:16px"><a class="btn o" href="https://publishing.insead.edu/case/aak-kolo-nafaso">{t['view_case']}</a></p></div></div>
 </div>"""
-    write(lang, "teaching", head(lang, title, t["hero_p3"], "teaching") + body + foot(lang))
+    write(lang, "teaching", head(lang, title, PAGE_DESC[lang]["teaching"], "teaching") + body + foot(lang))
+
+
+def paper_desc(p, lang, frag_html):
+    """Search description for a research page: who wrote it, where, then the standfirst."""
+    names = [a.strip() for a in re.split(r",\s*(?:and\s+)?|\s+and\s+", p["authors"]) if a.strip()]
+    j = " and " if lang == "en" else " et "
+    if len(names) <= 3 or names[-1] == "Pierre-Yann Dolbec":
+        who = j.join(names) if len(names) <= 2 else ", ".join(names[:-1]) + j + names[-1]
+    else:
+        upto = names[: names.index("Pierre-Yann Dolbec") + 1] if "Pierre-Yann Dolbec" in names else names[:1]
+        who = ", ".join(upto) + (" and colleagues" if lang == "en" else " et collègues")
+    m = re.search(r'<p class="standfirst">(.*?)</p>', frag_html, re.S)
+    sf = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else p["title"]
+    first = re.match(r"(.+?[.?!])(\s|$)", sf)
+    return f"{who} · {p['venue']}, {p['year']}. {first.group(1) if first else sf}"
 
 
 def featured_page(p, lang, nxt):
@@ -301,7 +316,7 @@ def featured_page(p, lang, nxt):
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
 </div></article>"""
-        write(lang, path, head(lang, p["q"][lang], p["title"], path, "/assets/img/og/" + p["slug"] + ".jpg") + body + foot(lang))
+        write(lang, path, head(lang, p["q"][lang], paper_desc(p, lang, essay), path, "/assets/img/og/" + p["slug"] + ".jpg") + body + foot(lang))
         return
     body = f"""<div class="narrow essay-head">
 <a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
@@ -353,7 +368,7 @@ def summary_page(p, lang):
 <div class="panel paper-cta"><div><div class="kicker">{t['the_paper']}</div><p>{citation(p, lang)}</p></div>
 <a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{t['read_publisher']}</a></div>
 </div>"""
-        write(lang, path, head(lang, p["title"], p["title"], path) + body + foot(lang))
+        write(lang, path, head(lang, p["title"], paper_desc(p, lang, standfirst), path) + body + foot(lang))
         return
     body = f"""<div class="wrap"><div class="paper">
 <div>
