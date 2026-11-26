@@ -235,7 +235,7 @@ def about(lang):
 {"".join(f"<p>{e(x)}</p>" for x in ABOUT[lang])}
 <h2>{t['background']}</h2>
 {bg}
-<p style="margin-top:40px"><a class="btn" href="/assets/cv.pdf">{t['cv']}</a></p>
+<p style="margin-top:40px"><a class="btn" href="/assets/Pierre-Yann_Dolbec_CV.pdf" target="_blank" rel="noopener">{t['cv']}</a></p>
 </div></div></div>"""
     write(lang, "about", head(lang, title, PAGE_DESC[lang]["about"], "about") + body + foot(lang))
 
