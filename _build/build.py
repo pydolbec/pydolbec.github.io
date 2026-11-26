@@ -4,7 +4,7 @@ Run from anywhere: python3 _build/build.py
 """
 import html, os, sys, shutil
 sys.path.insert(0, os.path.dirname(__file__))
-from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS
+from content import SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = ["en", "fr"]
@@ -32,7 +32,7 @@ def citation(p, lang):
 
 
 def pub_link(p):
-    return f"https://doi.org/{p['doi']}" if p["doi"] else "#"
+    return f"https://doi.org/{p['doi']}" if p["doi"] else p.get("url", "#")
 
 
 def head(lang, title, desc, path):
@@ -146,9 +146,7 @@ def about(lang):
 <div><div class="ph portrait">[{t['portrait']}]</div>
 <div class="facts"><b>{e(t['hero_p3'])}</b><br>{'Editorial review boards' if lang == 'en' else 'Comités de rédaction'}: {e(boards)}</div></div>
 <div><h1 class="page" style="margin-top:0">{e(title)}</h1>
-{tbd(lang)}
-{tbd(lang)}
-{tbd(lang)}
+{"".join(f"<p>{e(x)}</p>" for x in ABOUT[lang])}
 <h2>{t['background']}</h2>
 {bg}
 <p style="margin-top:40px"><a class="btn" href="/assets/cv.pdf">{t['cv']}</a></p>
@@ -189,13 +187,13 @@ def media(lang):
     title = dict(t["nav"])["media"]
     body = f"""<div class="wrap">
 <div class="media-top"><div><h1 class="page">{e(title)}</h1><p class="intro">{e(t['media_intro'])}</p></div>
-<div class="panel"><div class="kicker">{t['media_requests']}</div><p style="font-weight:600;font-size:18px;margin:10px 0 0"><a href="mailto:{SITE['email']}">{SITE['email']}</a></p></div></div>
+<div class="panel"><div class="kicker">{t['media_requests']}</div><p style="font-weight:600;font-size:18px;margin:10px 0 4px"><a href="mailto:{SITE['email']}">{SITE['email']}</a></p><p style="margin:0 0 10px">{MEDIA_CONTACT['phone']}</p><p style="font-size:14px;color:var(--muted);margin:0">{MEDIA_CONTACT['relations']}</p></div></div>
 <h2>{t['topics']}</h2>
 <div>{topics}</div>
 <h2>{t['bio']}</h2>
 <div class="bios">
-<div class="bio"><div class="kicker">{t['short_bio']}</div>{tbd(lang)}</div>
-<div class="bio"><div class="kicker">{t['long_bio']}</div>{tbd(lang)}</div>
+<div class="bio"><div class="kicker">{t['short_bio']}</div><p id="bio-s">{e(BIOS[lang]['short'])}</p><button class="chip" onclick="navigator.clipboard.writeText(document.getElementById('bio-s').innerText)">{t['copy']}</button></div>
+<div class="bio"><div class="kicker">{t['long_bio']}</div><p id="bio-l">{e(BIOS[lang]['long'])}</p><button class="chip" onclick="navigator.clipboard.writeText(document.getElementById('bio-l').innerText)">{t['copy']}</button></div>
 </div>
 <h2>{t['in_news']}</h2>
 {news}
@@ -232,6 +230,21 @@ def teaching(lang):
 def featured_page(p, lang, nxt):
     t = UI[lang]
     path = "research/" + p["slug"]
+    frag = os.path.join(os.path.dirname(__file__), "essays", f"{p['slug']}.{lang}.html")
+    if os.path.exists(frag):
+        essay = open(frag, encoding="utf-8").read()
+        body = f"""<article class="essay"><div class="narrow essay-head">
+<a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
+<div class="kicker">{dict(t['nav'])['research']} · {e(p['tag'][lang])}</div>
+<h1>{e(p['q'][lang])}</h1>
+{essay}
+<div class="narrow">
+<div class="cite"><p>{citation(p, lang)} {'Figures: CC BY 4.0, Pierre-Yann Dolbec.' if lang == 'en' else 'Figures : CC BY 4.0, Pierre-Yann Dolbec.'}</p><a class="btn" href="{pub_link(p)}">{t['read_paper']}</a></div>
+<div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
+<a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
+</div></article>"""
+        write(lang, path, head(lang, p["q"][lang], p["title"], path) + body + foot(lang))
+        return
     body = f"""<div class="narrow essay-head">
 <a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <div class="kicker">{dict(t['nav'])['research']} · {e(p['tag'][lang])}</div>
