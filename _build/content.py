@@ -155,7 +155,7 @@ PUBS = [
          authors="Pierre-Yann Dolbec, Zeynep Arsel, and Aya Aboelenien", venue="Journal of Marketing", details="86(6), 50–69", doi="10.1177/00222429221093624",
          tag={"en": "Coffee", "fr": "Café"},
          q={"en": "How did craft coffee reshape the coffee market?", "fr": "Comment le café artisanal a-t-il transformé le marché du café ?"},
-         mgr={"en": "how a business grows by adapting what other kinds of businesses do to its own customers.", "fr": "comment une entreprise croît en adaptant à sa clientèle ce que font d'autres types d'entreprises."}),
+         mgr={"en": "how firms grow by borrowing practices from other segments of their market.", "fr": "comment les entreprises croissent en empruntant les pratiques d'autres segments de leur marché."}),
     dict(slug="creators", featured=True, img="/assets/img/cards/creators.webp", kind="article", year=2025,
          title="From Fame and Followers to Fortune: How Person-Brands Capture Value in the Creator Economy",
          authors="Pierre-Yann Dolbec and Andrew Smith", venue="International Journal of Research in Marketing", details="42(4), 1264–1283", doi="", url="https://www.sciencedirect.com/science/article/pii/S0167811625000242",
@@ -167,7 +167,7 @@ PUBS = [
          authors="Alex Bitektine, Pierre-Yann Dolbec, Michele Martins, and Stijn Kruidenier", venue="Academy of Management Journal", details="68(6), 1168–1206", doi="10.5465/amj.2022.1135",
          tag={"en": "Regulation", "fr": "Réglementation"},
          q={"en": "How a World Cup rewrote a country's rules", "fr": "Comment une Coupe du monde a réécrit les règles d'un pays"},
-         mgr={"en": "how a temporary exception can become a permanent rule.", "fr": "comment une exception temporaire peut devenir une règle permanente."}),
+         mgr={"en": "how firms can turn a temporary exemption into a permanent rule change.", "fr": "comment les entreprises peuvent transformer une exemption temporaire en changement réglementaire permanent."}),
     # --- summaries ---
     dict(slug="fallacy-of-facility", kind="article", year=2026,
          title="The Fallacy of Facility: Concerns Regarding the (Mis)Use of GGT",
