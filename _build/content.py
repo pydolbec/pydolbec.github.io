@@ -304,7 +304,7 @@ COURSES = [
 
 TEXTBOOKS = [
     dict(title="Digital Marketing Strategy", year=2021, link="https://opentextbooks.concordia.ca/digitalmarketing/", action="read",
-         cover="https://opentextbooks.concordia.ca/digitalmarketing/wp-content/uploads/sites/41/2022/11/DMBCover_Photo-1-scaled-1-350x525.jpg",
+         cover="/assets/img/dms-cover.webp",
          blurb={"en": "A free, open textbook that gives students a framework for planning and running marketing online. More than 3,000 students used it across universities in 2024, with companion podcasts, videos and transcripts.",
                 "fr": "Un manuel libre et gratuit qui donne aux étudiants un cadre pour planifier et mener le marketing en ligne. Plus de 3 000 étudiants l'ont utilisé dans plusieurs universités en 2024, avec balados, vidéos et transcriptions."}),
     dict(title="Artificial Intelligence and Marketing", year=2024, link="/assets/ai-and-marketing.pdf", action="download",
