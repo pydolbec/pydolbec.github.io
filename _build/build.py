@@ -118,8 +118,25 @@ def write(lang, path, doc):
     out = os.path.join(ROOT, "" if lang == "en" else "fr", path.strip("/"), "index.html")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     doc = fix_imgs(doc)
+    doc = wrap_wide(doc, lang)
     with open(out, "w", encoding="utf-8") as f:
         f.write(doc)
+
+
+def wrap_wide(doc, lang):
+    """On phones, let wide figures and tables scroll sideways instead of shrinking."""
+    hint = "Swipe sideways to see the full figure." if lang == "en" else "Faites glisser de côté pour voir toute la figure."
+    sw = f'<p class="swipe">{hint}</p>'
+
+    def svg(m):
+        vb = re.search(r'viewBox="0 0 ([\d.]+)', m.group(0)[:400])
+        if vb and float(vb.group(1)) >= 600:
+            return f'<div class="scrollx">{m.group(0)}</div>{sw}'
+        return m.group(0)
+    doc = re.sub(r'(?<=<div class="figure">)\s*<svg\b.*?</svg>', svg, doc, flags=re.S)
+    doc = re.sub(r'<figure class="figure">\s*(<svg\b.*?</svg>)', lambda m: '<figure class="figure">' + svg(re.match(r'.*', m.group(1), re.S)), doc, flags=re.S)
+    doc = re.sub(r'(<table class="ftable".*?</table>)', lambda m: f'<div class="scrollx">{m.group(1)}</div>{sw.replace("figure", "table").replace("toute la table", "tout le tableau")}', doc, flags=re.S)
+    return doc
 
 
 _DIMS = {}
