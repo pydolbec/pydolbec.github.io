@@ -212,15 +212,17 @@ PUBS = [
          url="https://www.researchgate.net/publication/319472120_Netnographic_Analysis_Understanding_Culture_through_Social_Media_Data"),
 ]
 
-TOPICS = {  # from the Concordia media relations expert profile
+TOPICS = {  # from the Concordia media relations expert profile, plus the creator economy and regulation
     "en": ["Cultural and technological markets, taste, fashion and innovation", "Sneaker markets and product drops",
            "High fashion, streetwear and luxury streetwear", "Coffee markets and third-wave coffee",
            "The marketization of education", "Platform services such as Uber and Airbnb",
-           "The electric car market and Tesla", "Influencers and social media marketing"],
+           "The electric car market and Tesla", "Influencers and social media marketing",
+           "The creator economy and how creators earn", "Temporary rules, mega-events and regulatory change"],
     "fr": ["Marchés culturels et technologiques, goût, mode et innovation", "Marché des sneakers et lancements en édition limitée (drops)",
            "Mode de luxe, streetwear et streetwear de luxe", "Marché du café et café de troisième vague",
            "Marchandisation de l'éducation", "Plateformes de services comme Uber et Airbnb",
-           "Marché de la voiture électrique et Tesla", "Influenceurs et marketing sur les réseaux sociaux"],
+           "Marché de la voiture électrique et Tesla", "Influenceurs et marketing sur les réseaux sociaux",
+           "Économie des créateurs et revenus des créateurs", "Règles temporaires, grands événements et changement réglementaire"],
 }
 
 MEDIA_CONTACT = {

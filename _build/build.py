@@ -173,9 +173,7 @@ def head(lang, title, desc, path, img=None, ld=""):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 {ld}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 </head>
 <body id="top">
@@ -338,7 +336,7 @@ def home(lang):
 <p class="s2">{e(t['hero_p2'])}</p>
 <p class="s3"><b>{SITE['name']}</b><span class="sep"> · </span>{e(t['hero_p3'])}</p>
 </div>
-<img class="portrait" src="/assets/img/portrait.webp" alt="{'Portrait of' if lang == 'en' else 'Portrait de'} Pierre-Yann Dolbec" width="800" height="800">
+<img class="portrait" src="/assets/img/portrait.webp" alt="{'Portrait of' if lang == 'en' else 'Portrait de'} Pierre-Yann Dolbec" width="720" height="720">
 </section>
 <h2 class="sr-only">{t['featured']}</h2>
 <section class="cards">{cards}</section>
@@ -357,7 +355,7 @@ def about(lang):
     boards = ", ".join(BOARDS)
     title = dict(t["nav"])["about"]
     body = f"""<div class="wrap"><div class="about">
-<div><img class="portrait" src="/assets/img/portrait.webp" alt="{'Portrait of' if lang == 'en' else 'Portrait de'} Pierre-Yann Dolbec" width="800" height="800">
+<div><img class="portrait" src="/assets/img/portrait.webp" alt="{'Portrait of' if lang == 'en' else 'Portrait de'} Pierre-Yann Dolbec" width="720" height="720">
 <div class="facts"><b>{e(t['hero_p3'])}</b></div></div>
 <div><h1 class="page" style="margin-top:0">{e(title)}</h1>
 {"".join(f"<p>{e(x)}</p>" for x in ABOUT[lang])}
@@ -530,12 +528,49 @@ def add_toc(essay, lang):
     return essay[:i] + toc + essay[i:]
 
 
+def figure_text(essay, lang):
+    """After each wide essay figure, repeat its labels as a list that only screen readers get.
+    The drawing is exposed as one image, so its dates and numbers are otherwise unreachable."""
+    intro = "Figure content as text:" if lang == "en" else "Contenu de la figure en texte :"
+
+    def items(svg):
+        out, prev = [], None
+        for m in re.finditer(r"<text\b([^>]*)>(.*?)</text>", svg, re.S):
+            text = re.sub(r"<tspan\b[^>]*\b(?:x|dy)=[^>]*>", " ", m.group(2))  # a tspan on a new line
+            text = html.unescape(re.sub(r"<[^>]+>", "", text))
+            text = re.sub(r"\s+", " ", text).strip()
+            if not text:
+                continue
+            x = re.search(r'\bx="([\d.-]+)"', m.group(1))
+            y = re.search(r'\by="([\d.-]+)"', m.group(1))
+            pos = (float(x.group(1)), float(y.group(1))) if x and y else None
+            style = re.sub(r'\b[xy]="[^"]*"', "", m.group(1)).strip()
+            between = svg[prev[3]:m.start()] if prev else ""
+            # a wrapped label continues on the next line: same x, same style, next line down
+            if (prev and pos and prev[0] and prev[1] == style and "<g" not in between and "</g>" not in between
+                    and abs(pos[0] - prev[0][0]) < 1 and 0 < pos[1] - prev[0][1] <= 22):
+                out[-1] += " " + text
+            else:
+                out.append(text)
+            prev = (pos, style, text, m.end())
+        return out
+
+    def add(m):
+        vb = re.search(r'viewBox="0 0 ([\d.]+)', m.group(2)[:400])
+        if not (vb and float(vb.group(1)) >= 600):
+            return m.group(0)
+        lis = "".join(f"<li>{e(t)}</li>" for t in items(m.group(2)))
+        return f'{m.group(1)}{m.group(2)}<div class="sr-only"><p>{intro}</p><ul>{lis}</ul></div>'
+    return re.sub(r'(<(?:div|figure) class="figure">\s*)(<svg\b.*?</svg>)', add, essay, flags=re.S)
+
+
 def featured_page(p, lang, nxt):
     t = UI[lang]
     path = "research/" + p["slug"]
     frag = os.path.join(os.path.dirname(__file__), "essays", f"{p['slug']}.{lang}.html")
     if os.path.exists(frag):
         essay = add_toc(open(frag, encoding="utf-8").read(), lang)
+        essay = figure_text(essay, lang)
         paper = f'<a href="{pub_link(p)}" target="_blank" rel="noopener">{t["read_paper"]}&nbsp;↗{newtab(lang)}</a>'
         essay = re.sub(r'(<div class="meta">.*?)(</div>)', lambda m: m.group(1) + " · " + paper + m.group(2), essay, count=1, flags=re.S)
         body = f"""<article class="essay"><div class="narrow essay-head">
