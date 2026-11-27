@@ -357,8 +357,18 @@ ul.rows,ul.topics{list-style:none;margin:0;padding:0}
 @media (max-width:640px){.mech .ill{padding:14px 12px}}
 
 /* media topics: alphabetical, read down the columns; each topic links to its paper */
-ul.topics{columns:3 260px;column-gap:32px}
+ul.topics{columns:2 260px;column-gap:32px;margin-top:28px}
 ul.topics li{break-inside:avoid;border-top:1px solid var(--line)}
 ul.topics a{display:block;padding:12px 0;font-weight:500;text-decoration:none}
 ul.topics a::after{content:"\00a0\2192";color:var(--muted)}
 ul.topics a:hover{text-decoration:underline}
+.media-top{align-items:start}
+.media-top>.panel{margin-top:64px}
+@media (max-width:900px){
+  .media-top{gap:0}
+  .media-top>.media-main{display:contents}
+  .media-top h1.page{order:1}
+  .media-top>.panel{order:2;margin:0 0 28px}
+  .media-top .intro{order:3}
+  .media-top ul.topics{order:4}
+}
