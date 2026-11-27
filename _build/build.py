@@ -445,9 +445,10 @@ def media(lang):
     title = dict(t["nav"])["media"]
     body = f"""<div class="wrap">
 <div class="media-top"><div class="media-main"><h1 class="page">{e(title)}</h1><p class="intro">{e(t['media_intro'])}</p>
+</div>
+<div class="panel"><div class="kicker">{t['media_requests']}</div><p style="font-weight:600;font-size:18px;margin:10px 0 4px"><a href="mailto:{SITE['email']}">{SITE['email']}</a></p><p style="margin:0 0 10px">{mc['phone']}</p><p style="font-size:14px;color:var(--muted);margin:0">{mc['relations']} · <a href="mailto:{mc['relations_email']}">{mc['relations_email']}</a></p></div>
 <h2 class="sr-only">{t['topics']}</h2>
 <ul class="topics">{topics}</ul></div>
-<div class="panel"><div class="kicker">{t['media_requests']}</div><p style="font-weight:600;font-size:18px;margin:10px 0 4px"><a href="mailto:{SITE['email']}">{SITE['email']}</a></p><p style="margin:0 0 10px">{mc['phone']}</p><p style="font-size:14px;color:var(--muted);margin:0">{mc['relations']} · <a href="mailto:{mc['relations_email']}">{mc['relations_email']}</a></p></div></div>
 <h2>{t['bio']}</h2>
 <div class="bios">
 <div class="bio"><div class="kicker" id="bio-s-h">{t['short_bio']}</div><p id="bio-s">{e(BIOS[lang]['short'])}</p>{copy_btn('s')}</div>
