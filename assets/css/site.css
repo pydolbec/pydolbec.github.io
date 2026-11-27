@@ -200,14 +200,18 @@ img.cardimg,.feat4 img.cardimg{aspect-ratio:3/2;height:auto;object-fit:cover}
 /* summary pages: text left, summary and managers right, paper box full width */
 .summary-head{max-width:880px}
 .summary-head h1{font-size:clamp(32px,4vw,46px);line-height:1.1;letter-spacing:-1.2px;margin:12px 0;font-weight:800}
-.summary-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:56px;margin-top:40px;align-items:start}
+/* source order is In short, text, managers box; wide screens place the two boxes in the right column */
+.summary-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;grid-template-rows:auto 1fr;gap:24px 56px;margin-top:40px;align-items:start}
+.summary-main{grid-column:1;grid-row:1 / span 2}
 .summary-main h2:first-child{margin-top:0}
-.summary-side .inshort{margin-top:0}
-.summary-side .mgrbox{margin-top:24px}
-.summary-side .mgrbox .lead{font-size:18px}
+.summary-grid>.inshort{grid-column:2;grid-row:1;margin-top:0}
+.summary-grid>.mgrbox{grid-column:2;grid-row:2;margin-top:0;scroll-margin-top:16px}
+.summary-grid>.mgrbox .lead{font-size:18px}
+.jump{display:none;margin:14px 0 0;font-size:15px;font-weight:600}
+.jump a{color:var(--accent);text-decoration:none;display:inline-block;padding:8px 0}
 .paper-cta{margin-top:64px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
 .paper-cta p{margin:8px 0 0;color:#333;font-size:15px;max-width:760px}
-@media (max-width:900px){.summary-grid{grid-template-columns:1fr;gap:32px}.summary-side{order:-1}}
+@media (max-width:900px){.summary-grid{grid-template-columns:1fr;grid-template-rows:none;gap:32px}.summary-main,.summary-grid>.inshort,.summary-grid>.mgrbox{grid-column:auto;grid-row:auto}.jump{display:block}}
 .summary-head .standfirst{margin-top:24px}
 /* data tables inside figures */
 .ftable{width:100%;border-collapse:collapse;font-size:15px;line-height:1.4}
@@ -224,19 +228,17 @@ img.cardimg,.feat4 img.cardimg{aspect-ratio:3/2;height:auto;object-fit:cover}
 img{height:auto}
 .hero-h1{margin:0;font:inherit;letter-spacing:inherit}
 .hero-h1 span{display:block}
-/* mobile menu */
-.navtoggle,.burger{display:none}
-@media (max-width:640px){
-  .site-head .wrap{padding-top:18px;padding-bottom:18px;flex-wrap:wrap;position:relative}
-  .navtoggle{display:block;position:absolute;right:20px;top:14px;width:44px;height:44px;margin:0;opacity:0;cursor:pointer;z-index:2}
-  .burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;align-items:flex-end;cursor:pointer}
+/* phone and tablet menu: a button that opens the list (script in build.py; without script the list stays open) */
+.burger{display:none}
+@media (max-width:820px){
+  .site-head .wrap{padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+  .burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;align-items:flex-end;cursor:pointer;background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;-webkit-tap-highlight-color:transparent}
   .burger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .2s,opacity .2s}
-  .navtoggle:focus-visible+.burger{outline:2px solid var(--accent,#2546c9);outline-offset:2px}
-  .navtoggle:checked+.burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .navtoggle:checked+.burger span:nth-child(2){opacity:0}
-  .navtoggle:checked+.burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;margin-top:12px;border-top:1px solid var(--line)}
-  .navtoggle:checked~.nav{display:flex}
+  .burger[aria-expanded="true"]~.nav{display:flex}
   .nav>a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px}
   .nav a.on{border-bottom:1px solid var(--line);padding-bottom:14px}
   .nav .lang{align-self:flex-start;margin-top:16px}
@@ -320,7 +322,7 @@ ul.topics li{display:inline-block}
 @media (min-width:1100px){.narrow > .figure:not(:has(.ftable)){margin-left:-152px;margin-right:-152px}}
 /* print: no menus, readable managers box, blocks kept whole */
 @media print{
-  .site-head .nav,.burger,.navtoggle,.skip,.site-foot nav,.pager,.totop,.toc,.btn,.more,.swipe{display:none}
+  .site-head .nav,.burger,.skip,.site-foot nav,.pager,.totop,.toc,.btn,.more,.swipe,.jump{display:none}
   body{font-size:11pt}
   .site-foot{background:none;color:var(--ink);margin-top:32px;border-top:1px solid var(--ink)}
   .site-foot b{color:var(--ink)}
@@ -344,3 +346,11 @@ ul.topics li{display:inline-block}
 @media (max-width:640px){.ftable tbody th,.ftable thead th:first-child,.ftable thead td:first-child{position:sticky;left:-18px;background:#fff;box-shadow:inset -1px 0 0 var(--line)}}
 /* phones: French inverted verbs and « au-delà » stay on one line in headings */
 @media (max-width:640px){.nb{white-space:nowrap}}
+
+/* 641 to 900 px: Home and About keep the text beside a smaller portrait */
+@media (min-width:641px) and (max-width:900px){
+  .hero{grid-template-columns:1fr 200px;gap:32px}
+  .hero img.portrait{max-width:200px}
+  .about{grid-template-columns:200px 1fr;gap:32px}
+  .about img.portrait{max-width:200px}
+}

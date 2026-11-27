@@ -186,16 +186,29 @@ def head(lang, title, desc, path, img=None, ld=""):
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 {ld}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
+<noscript><style>@media (max-width:820px){{.burger{{display:none}}.nav{{display:flex}}}}</style></noscript>
 </head>
 <body id="top">
 <a class="skip" href="#main">{labels['skip']}</a>
 <header class="site-head"><div class="wrap">
 <a class="brand" href="{url(lang)}">{SITE['name']}</a>
-<input type="checkbox" id="navtoggle" class="navtoggle" autocomplete="off" aria-label="Menu">
-<label for="navtoggle" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
-<nav class="nav" aria-label="{labels['main']}">{nav}<span class="lang" role="group" aria-label="{labels['lang']}">{toggle}</span></nav>
+<button type="button" class="burger" id="navbtn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav" aria-label="{labels['main']}">{nav}<span class="lang" role="group" aria-label="{labels['lang']}">{toggle}</span></nav>
 </div></header>
 <main id="main" tabindex="-1">
+"""
+
+
+# Phone and tablet menu: the button opens and closes the list, Escape closes it,
+# and it is closed again when the page comes back through the Back button.
+NAV_JS = """<script>
+(function(){var b=document.getElementById('navbtn');if(!b)return;
+function set(o){b.setAttribute('aria-expanded',o?'true':'false')}
+b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&b.getAttribute('aria-expanded')==='true'){set(false);b.focus()}});
+window.addEventListener('pageshow',function(){set(false)});
+})();
+</script>
 """
 
 
@@ -206,7 +219,7 @@ def foot(lang):
 <div><b>{SITE['name']}</b><div style="margin-top:8px"><a href="mailto:{SITE['email']}">{SITE['email']}</a> · {UI[lang]['footer_city']}</div></div>
 <nav aria-label="{'Profiles' if lang == 'en' else 'Profils'}">{links}</nav>
 </div></footer>
-</body>
+{NAV_JS}</body>
 </html>
 """
 
@@ -392,7 +405,7 @@ def research(lang):
     title = dict(t["nav"])["research"]
     body = f"""<div class="wrap">
 <h1 class="page">{e(title)}</h1>
-<p class="intro">{e(RESEARCH_INTRO[lang])}</p>
+{"".join(f'<p class="intro">{e(x)}</p>' for x in RESEARCH_INTRO[lang])}
 <p class="profile-links">{profiles}</p>
 <h2>{t['featured']}</h2>
 <div class="feat4">{feat}</div>
@@ -527,7 +540,7 @@ def paper_desc(p, lang, frag_html):
 
 
 def add_toc(essay, lang):
-    """Give each section heading an anchor and list the sections before the first one."""
+    """Give each section heading an anchor and list the sections above the Abstract box."""
     heads = []
 
     def tag(m):
@@ -539,7 +552,9 @@ def add_toc(essay, lang):
     label = "In this article" if lang == "en" else "Dans cet article"
     items = "".join(f'<li><a href="#s{i}">{h}</a></li>' for i, h in enumerate(heads, 1))
     toc = f'<nav class="toc" aria-label="{label}"><div class="kicker">{label}</div><ol>{items}</ol></nav>\n'
-    i = essay.find('<h2 id="s1">')
+    i = essay.find('<div class="inshort">')
+    if i < 0:
+        i = essay.find('<h2 id="s1">')
     return essay[:i] + toc + essay[i:]
 
 
@@ -637,6 +652,10 @@ def summary_page(p, lang, nxt=None):
         html_, mgr = take_div(html_, "mgrbox")
         html_, standfirst = take_tag(html_, "p", "standfirst")
         nxt_link = f'<a href="{url(lang, "research/" + nxt["slug"])}">{t["next"]} {en(e(nxt["title"]), lang)} →</a>' if nxt else ""
+        if mgr and inshort:
+            # on one-column layouts the managers box sits after the text: link to it from In short
+            mgr = mgr.replace('<div class="mgrbox">', '<div class="mgrbox" id="managers">', 1)
+            inshort = inshort[:inshort.rindex("</div>")] + f'<p class="jump"><a href="#managers">{t["managers_box"]}&nbsp;↓</a></p></div>'
         body = f"""<div class="wrap summary-page">
 <a class="more" style="margin:48px 0 0" href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <header class="summary-head">
@@ -646,8 +665,9 @@ def summary_page(p, lang, nxt=None):
 {standfirst}
 </header>
 <div class="summary-grid">
+{inshort}
 <article class="essay summary-main">{html_}</article>
-<aside class="summary-side">{inshort}{mgr}</aside>
+{mgr}
 </div>
 <div class="panel paper-cta"><div><div class="kicker">{t['the_paper']}</div><p>{citation(p, lang)}</p></div>
 <a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{'ResearchGate' if 'researchgate.net' in pub_link(p) else t['read_publisher']}&nbsp;↗{newtab(lang)}</a></div>

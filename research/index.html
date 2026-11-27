@@ -24,27 +24,27 @@
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=87bdcfa2">
+<link rel="stylesheet" href="/assets/css/site.css?v=39200611">
+<noscript><style>@media (max-width:820px){.burger{display:none}.nav{display:flex}}</style></noscript>
 </head>
 <body id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap">
 <a class="brand" href="/">Pierre-Yann Dolbec</a>
-<input type="checkbox" id="navtoggle" class="navtoggle" autocomplete="off" aria-label="Menu">
-<label for="navtoggle" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
-<nav class="nav" aria-label="Main"><a href="/about/">About</a><a href="/research/" class=on aria-current=page>Research</a><a href="/media/">Media</a><a href="/teaching/">Teaching</a><span class="lang" role="group" aria-label="Language"><span class="cur">EN</span><a href="/fr/research/" hreflang="fr" lang="fr">FR<span class="sr-only"> – français</span></a></span></nav>
+<button type="button" class="burger" id="navbtn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav" aria-label="Main"><a href="/about/">About</a><a href="/research/" class=on aria-current=page>Research</a><a href="/media/">Media</a><a href="/teaching/">Teaching</a><span class="lang" role="group" aria-label="Language"><span class="cur">EN</span><a href="/fr/research/" hreflang="fr" lang="fr">FR<span class="sr-only"> – français</span></a></span></nav>
 </div></header>
 <main id="main" tabindex="-1">
 <div class="wrap">
 <h1 class="page">Research</h1>
-<p class="intro">I study how markets are made: how consumers and firms deal with market complexity (the conflicting expectations that institutions, technologies and social norms place on them) and how they use that complexity to shape markets. For scholars, my work explains how market categories form and change, how newcomers gain access to elite categories, and how new brands resolve cultural contradictions to build distinctive identities. For managers, it addresses core questions of strategy: how to enter a category, how to build a distinctive and resonant position, and how to shape the market you compete in. I build in-depth case studies from archives, interviews and fieldwork, often in partnership with the organizations involved, from Brazilian Jesuit schools to AAK&#x27;s shea sourcing program in West Africa. The cases range from streetwear and craft coffee to the creator economy and the regulation of beer at Brazil&#x27;s 2014 World Cup.</p>
+<p class="intro">I study how markets are made: how consumers and firms deal with market complexity (the conflicting expectations that institutions, technologies and social norms place on them) and how they use that complexity to shape markets.</p><p class="intro">For scholars, my work explains how market categories form and change, how newcomers gain access to elite categories, and how new brands resolve cultural contradictions to build distinctive identities. For managers, it addresses core questions of strategy: how to enter a category, how to build a distinctive and resonant position, and how to shape the market you compete in.</p><p class="intro">I build in-depth case studies from archives, interviews and fieldwork, often in partnership with the organizations involved, from Brazilian Jesuit schools to AAK&#x27;s shea sourcing program in West Africa. The cases range from streetwear and craft coffee to the creator economy and the regulation of beer at Brazil&#x27;s 2014 World Cup.</p>
 <p class="profile-links"><a href="/assets/Pierre-Yann_Dolbec_CV.pdf" target="_blank" rel="noopener">CV (PDF)&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://scholar.google.com/citations?user=jr9up9kAAAAJ" target="_blank" rel="noopener">Google Scholar&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://orcid.org/0000-0002-0463-7530" target="_blank" rel="noopener">ORCID&nbsp;↗<span class="sr-only"> (opens in a new tab)</span></a></p>
 <h2>Featured</h2>
 <div class="feat4"><a class="card" href="/research/streetwear/"><img width="1200" height="800" class="cardimg" src="/assets/img/cards/streetwear.webp" alt="" loading="lazy">
 <div class="kicker" style="margin-top:12px">Fashion</div><h3>How did streetwear make it into high fashion?</h3></a><a class="card" href="/research/coffee/"><img width="1200" height="800" class="cardimg" src="/assets/img/cards/coffee.webp" alt="" loading="lazy">
 <div class="kicker" style="margin-top:12px">Coffee</div><h3>How did craft coffee reshape the coffee market?</h3></a><a class="card" href="/research/creators/"><img width="1200" height="800" class="cardimg" src="/assets/img/cards/creators.webp" alt="" loading="lazy">
 <div class="kicker" style="margin-top:12px">Creators</div><h3>How do creators turn followers into a fortune?</h3></a><a class="card" href="/research/world-cup/"><img width="1200" height="800" class="cardimg" src="/assets/img/cards/world-cup.webp" alt="" loading="lazy">
-<div class="kicker" style="margin-top:12px">Regulation</div><h3>How a World Cup rewrote a country&#x27;s rules</h3></a></div>
+<div class="kicker" style="margin-top:12px">Regulation</div><h3>How did a World Cup rewrite a country&#x27;s rules?</h3></a></div>
 <h2 id="pubs-h">All publications</h2>
 <div id="filters" role="group" aria-labelledby="pubs-h" style="margin-bottom:18px"><button type="button" class="chip on" data-f="all" aria-pressed="true">All</button><button type="button" class="chip" data-f="article" aria-pressed="false">Journal articles</button><button type="button" class="chip" data-f="chapter" aria-pressed="false">Book chapters</button></div>
 <p id="pubcount" class="sr-only" role="status" data-label="publications shown"></p>
@@ -61,5 +61,13 @@ var st=document.getElementById('pubcount');st.textContent=n+' '+st.dataset.label
 <div><b>Pierre-Yann Dolbec</b><div style="margin-top:8px"><a href="mailto:pierre-yann.dolbec@concordia.ca">pierre-yann.dolbec@concordia.ca</a> · Montréal</div></div>
 <nav aria-label="Profiles"><a href="https://scholar.google.com/citations?user=jr9up9kAAAAJ" target="_blank" rel="noopener">Google Scholar<span class="sr-only"> (opens in a new tab)</span></a><a href="https://orcid.org/0000-0002-0463-7530" target="_blank" rel="noopener">ORCID<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.linkedin.com/in/pydolbec/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.concordia.ca/jmsb/faculty/pierre-yann-dolbec.html" target="_blank" rel="noopener">Concordia<span class="sr-only"> (opens in a new tab)</span></a></nav>
 </div></footer>
+<script>
+(function(){var b=document.getElementById('navbtn');if(!b)return;
+function set(o){b.setAttribute('aria-expanded',o?'true':'false')}
+b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&b.getAttribute('aria-expanded')==='true'){set(false);b.focus()}});
+window.addEventListener('pageshow',function(){set(false)});
+})();
+</script>
 </body>
 </html>
