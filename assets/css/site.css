@@ -160,7 +160,7 @@ html[lang=fr] .essay q{quotes:"«\00a0" "\00a0»" "“" "”"}
 .mech .ev{margin-top:auto;border-top:1px solid var(--line);padding-top:14px;font-size:15.5px;line-height:1.5}
 .mech .src{display:block;font-size:12px;color:var(--soft);margin-top:6px;letter-spacing:.3px}
 .mech .ill{background:#f6f7f9;border-left:1px solid var(--line);padding:22px;display:flex;align-items:center;justify-content:center}
-.mech .ill svg{width:100%;height:auto}
+.mech .ill svg{width:100%;max-width:390px;height:auto}
 .slot{border:1.5px dashed #b6bac0;width:100%;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;text-align:center;font-size:13px;line-height:1.6;color:#6b7077}
 .slot b{color:#3f444a}
 .slot span{font-size:11.5px;letter-spacing:.3px;color:#8a8f96}
@@ -248,7 +248,8 @@ img{height:auto}
 .summary-grid>*{min-width:0}
 @media (max-width:640px){
   .scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -18px;padding:0 18px}
-  .scrollx>svg{min-width:620px}
+  .scrollx>svg{min-width:720px}
+  .summary-main .scrollx>svg{min-width:620px}
   .swipe{display:block;font-size:12px;color:#6b6b6b;margin:8px 0 0}
   .figure{padding:14px}
   .site-foot nav a{display:inline-block;padding:12px 0}
@@ -354,3 +355,5 @@ ul.topics li{display:inline-block}
   .about{grid-template-columns:200px 1fr;gap:32px}
   .about img.portrait{max-width:200px}
 }
+/* phones: essay drawings use the full column, so their 12-unit type renders at about 11 px */
+@media (max-width:640px){.mech .ill{padding:14px 12px}}
