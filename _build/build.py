@@ -295,6 +295,8 @@ def pub_row(p, lang, publisher=False):
         label = "Publisher" if lang == "en" else "Éditeur"
         if "researchgate.net" in pub_link(p):
             label = "ResearchGate"
+        if p.get("link_label"):
+            label = p["link_label"][lang]
         sep = ": " if lang == "en" else NB + ": "
         tab = "opens in a new tab" if lang == "en" else "s’ouvre dans un nouvel onglet"
         return (f'<li class="row pubrow" data-kind="{p["kind"]}">'
@@ -673,7 +675,7 @@ def summary_page(p, lang, nxt=None):
 {mgr}
 </div>
 <div class="panel paper-cta"><div><div class="kicker">{t['the_paper']}</div><p>{citation(p, lang)}</p></div>
-<a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{'ResearchGate' if 'researchgate.net' in pub_link(p) else t['read_publisher']}&nbsp;↗{newtab(lang)}</a></div>
+<a class="btn" href="{pub_link(p)}" target="_blank" rel="noopener">{p['link_label'][lang] if p.get('link_label') else 'ResearchGate' if 'researchgate.net' in pub_link(p) else t['read_publisher']}&nbsp;↗{newtab(lang)}</a></div>
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 {nxt_link}</div>
 </div>"""
