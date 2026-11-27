@@ -374,3 +374,9 @@ ul.topics a:hover{text-decoration:underline}
   .media-top .intro{order:3}
   .media-top ul.topics{order:4;margin-top:28px}
 }
+/* phones: summaries reach "In short" sooner; headings avoid a last line of one short word */
+@media (max-width:640px){
+  .summary-head .standfirst{font-size:19px;line-height:1.5}
+  .summary-head h1{font-size:26px;letter-spacing:-.6px}
+  h1:not(.hero-h1),h2,h3{text-wrap:pretty}
+}
