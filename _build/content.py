@@ -260,23 +260,23 @@ BIOS = {
     },
 }
 
-# From CV, newest first: (date, outlet, headline)
+# From CV, newest first: (date, outlet, headline[, "fr" when the headline is in French])
 MEDIA = [
     ("2026", "Academy of Management Insights", "Brazil's Temporary Stadium Beer Policy Was a Game-Changer"),
     ("2026", "The Up Next Podcast", "How Creators Monetize their Work (with Andrew N. Smith)"),
     ("2026", "CBC News", "They're odd, unique and expensive — why niche perfumes are trending"),
-    ("2025", "Clin d'Œil", "Pourquoi les prix des parfums sont-ils astronomiques?"),
+    ("2025", "Clin d'Œil", "Pourquoi les prix des parfums sont-ils astronomiques?", "fr"),
     ("2025", "CBC News", "This video game retailer is revamping the in-store experience for Montreal gamers"),
     ("2025", "The Conversation", "Doechii's Thom Browne look at the Grammys bridged street culture and luxury fashion"),
     ("2024", "CBC Radio One", "Can Reddit stay 'real'?"),
-    ("2024", "Radio-Canada, 15-18", "Poursuite végétalienne contre Starbucks et Dunkin'"),
+    ("2024", "Radio-Canada, 15-18", "Poursuite végétalienne contre Starbucks et Dunkin'", "fr"),
     ("2024", "World Economic Forum, Davos", "The AAK Kolo Nafaso Programme: Securing an Alternative Shea Supply Chain"),
-    ("2023", "La Presse", "Cafés italiens nouveau genre"),
-    ("2023", "Radio-Canada, 15-18", "Les grandes chaînes et la culture du café"),
+    ("2023", "La Presse", "Cafés italiens nouveau genre", "fr"),
+    ("2023", "Radio-Canada, 15-18", "Les grandes chaînes et la culture du café", "fr"),
     ("2023", "Radio-Canada, 15-18", "On the launch of Starbucks' Oleato"),
     ("2023", "Chief Scientist of Quebec", "Embracing responsible consumption"),
     ("2023", "CBC, Let's Go", "On the launch of Nike SB Montreal"),
-    ("2022", "La Presse", "Quel avenir pour nos cafés?"),
+    ("2022", "La Presse", "Quel avenir pour nos cafés?", "fr"),
     ("2022", "CTV News Montreal", "Weekend with Amanda Kline"),
     ("2022", "The Conversation", "The craft revolution helped develop the market for specialty coffee"),
     ("2022", "INSEAD Knowledge", "Transforming a supply chain into a social enterprise"),
@@ -285,11 +285,11 @@ MEDIA = [
     ("2020", "Global TV", "Morning News with Laura Casella"),
     ("2020", "CJAD 800", "The Andrew Carter Morning Show"),
     ("2020", "CTV News", "CTV News at Five"),
-    ("2019", "Radio-Canada", "L'Heure du monde"),
-    ("2019", "Journal de Montréal", "Uber fait souffrir les taxis"),
+    ("2019", "Radio-Canada", "L'Heure du monde", "fr"),
+    ("2019", "Journal de Montréal", "Uber fait souffrir les taxis", "fr"),
     ("2019", "CJAD 800", "Is Uber beneficial for cities?"),
-    ("2017", "Les Affaires", "Trois stratégies pour combattre un Airbnb, Tesla ou Uber"),
-    ("2017", "Le Devoir", "Après Uber, est-ce que l'application Lyft s'apprête à prendre pied au Canada?"),
+    ("2017", "Les Affaires", "Trois stratégies pour combattre un Airbnb, Tesla ou Uber", "fr"),
+    ("2017", "Le Devoir", "Après Uber, est-ce que l'application Lyft s'apprête à prendre pied au Canada?", "fr"),
 ]
 
 COURSES = [

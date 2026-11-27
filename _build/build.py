@@ -74,6 +74,17 @@ def fr_page(doc):
     return "".join(out)
 
 
+def fr_headings(doc):
+    """In French headings, keep inverted verbs (« a-t-il », « transforment-ils ») and « au-delà » on one line."""
+    pat = re.compile(r"\b\w+(?:-t)?-(?:ils?|elles?|on)\b|\bau-delà\b", re.I)
+
+    def heading(m):
+        parts = re.split(r"(<[^>]+>)", m.group(3))
+        inner = "".join(x if x.startswith("<") else pat.sub(lambda w: f'<span class="nb">{w.group(0)}</span>', x) for x in parts)
+        return m.group(1) + inner + m.group(4)
+    return re.sub(r"(<h([1-4])\b[^>]*>)(.*?)(</h\2>)", heading, doc, flags=re.S)
+
+
 def fix_tables(doc):
     """Table headers: empty corner cell is a td; column and row headers carry scope."""
     def thead(m):
@@ -180,7 +191,7 @@ def head(lang, title, desc, path, img=None, ld=""):
 <a class="skip" href="#main">{labels['skip']}</a>
 <header class="site-head"><div class="wrap">
 <a class="brand" href="{url(lang)}">{SITE['name']}</a>
-<input type="checkbox" id="navtoggle" class="navtoggle" aria-label="{'Menu' if lang == 'en' else 'Menu'}">
+<input type="checkbox" id="navtoggle" class="navtoggle" autocomplete="off" aria-label="Menu">
 <label for="navtoggle" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
 <nav class="nav" aria-label="{labels['main']}">{nav}<span class="lang" role="group" aria-label="{labels['lang']}">{toggle}</span></nav>
 </div></header>
@@ -207,7 +218,7 @@ def write(lang, path, doc):
     doc = fix_tables(doc)
     doc = wrap_wide(doc, lang)
     if lang == "fr":
-        doc = fr_page(doc)
+        doc = fr_headings(fr_page(doc))
     with open(out, "w", encoding="utf-8") as f:
         f.write(doc)
 
@@ -321,9 +332,10 @@ def take_tag(html_, tag, cls):
 def home(lang):
     t = UI[lang]
     cards = ""
-    for p in featured():
+    for i, p in enumerate(featured()):
+        load = 'fetchpriority="high"' if i == 0 else 'loading="lazy"'  # the first card is on the first phone screen
         cards += f"""<a class="card" href="{url(lang, 'research/' + p['slug'])}">
-<img class="cardimg" src="{p['img']}" alt="" loading="lazy">
+<img class="cardimg" src="{p['img']}" alt="" {load}>
 <div class="kicker">{e(p['tag'][lang])} · {en(e(p['venue']), lang)},{NB}{p['year']}</div>
 <h3>{e(p['q'][lang])}</h3>
 <div class="mgr"><b>{t['for_managers']}</b> {e(p['mgr'][lang])}</div>
@@ -402,7 +414,10 @@ var st=document.getElementById('pubcount');st.textContent=n+' '+st.dataset.label
 def media(lang):
     t = UI[lang]
     topics = "".join(f'<li class="chip tag">{e(x)}</li>' for x in TOPICS[lang])
-    news = "".join(f'<li class="row news"><b>{e(o)}</b><span>{e(h)}</span><span class="y">{d}</span></li>' for d, o, h in MEDIA)
+
+    def headline(h, hl):
+        return f"<span>{e(h)}</span>" if hl == lang else f'<span lang="{hl}">{e(h)}</span>'
+    news = "".join(f'<li class="row news"><b>{e(o)}</b>{headline(h, (hl or ["en"])[0])}<span class="y">{d}</span></li>' for d, o, h, *hl in MEDIA)
     mc = MEDIA_CONTACT[lang]
     copied = "Copied" if lang == "en" else "Copié"
 

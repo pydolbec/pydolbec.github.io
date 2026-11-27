@@ -331,3 +331,16 @@ ul.topics li{display:inline-block}
   .narrow > .figure:not(:has(.ftable)){margin-left:0;margin-right:0}
   h2,h3,h4{break-after:avoid}
 }
+
+/* mobile review, 2026-11-27 */
+/* French headline holds on two lines down to 320 px */
+@media (max-width:640px){html[lang=fr] .hero .big{font-size:clamp(44px,14.5vw,56px)}}
+/* stacked essay photos show whole instead of being cropped to a 300 px box */
+@media (max-width:820px){.mech .ill.has-photo img{flex:none;min-height:0}.mech .ill.has-photo .photo.pair img{min-height:0}}
+/* 320 px phones: name and menu button share one row; the Media contact panel fits */
+@media (max-width:340px){.brand{font-size:21px}.site-head .wrap{gap:12px}.panel{padding:22px 18px}.panel a[href^="mailto"]{font-size:14px}}
+.media-top>*{min-width:0}
+/* tables that scroll sideways keep their row labels in view */
+@media (max-width:640px){.ftable tbody th,.ftable thead th:first-child,.ftable thead td:first-child{position:sticky;left:-18px;background:#fff;box-shadow:inset -1px 0 0 var(--line)}}
+/* phones: French inverted verbs and « au-delà » stay on one line in headings */
+@media (max-width:640px){.nb{white-space:nowrap}}
