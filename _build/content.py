@@ -204,10 +204,10 @@ PUBS = [
          authors="Eileen Fischer and Pierre-Yann Dolbec", venue="Handbook of Qualitative Research Methods in Marketing, 2nd ed. (Edward Elgar)", details="69–78", doi="10.4337/9781035302727.00013", url="https://www.elgaronline.com/edcollchap/book/9781035302727/book-part-9781035302727-13.xml"),
     dict(slug="in-or-out", kind="chapter", year=2018,
          title="In or Out? How Consumer Performances Lead to the Emergence of New Tastes",
-         authors="Pierre-Yann Dolbec and Andre F. Maciel", venue="Taste, Consumption and Markets (Routledge)", details="95–112", doi="10.4324/9781315205922-7",
+         authors="Pierre-Yann Dolbec and Andre F. Maciel", venue="Taste, Consumption and Markets (Routledge)", details="95–114", doi="10.4324/9781315205922-7",
          url="https://www.routledge.com/Taste-Consumption-and-Markets-An-Interdisciplinary-Volume/Arsel-Bean/p/book/9781138636576"),
     dict(slug="netnographic-analysis", kind="chapter", year=2014,
-         title="Netnographic Analysis: Capturing and Interpreting Culture through Websites, Blogs, Tweets, Facebook Posts, Virtual Worlds and Other Social Media Data",
+         title="Netnographic Analysis: Understanding Culture through Social Media Data",
          authors="Robert V. Kozinets, Pierre-Yann Dolbec, and Amanda Earley", venue="The SAGE Handbook of Qualitative Data Analysis (Sage)", details="262–276", doi="10.4135/9781446282243.n18",
          url="https://www.researchgate.net/publication/319472120_Netnographic_Analysis_Understanding_Culture_through_Social_Media_Data"),
 ]
