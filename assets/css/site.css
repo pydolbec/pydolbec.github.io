@@ -249,3 +249,24 @@ img{height:auto}
   a.more{display:inline-block;padding:10px 0}
   .hero img.portrait{max-width:220px}
 }
+/* essay contents + back to top */
+html{scroll-behavior:smooth}
+.essay h2[id]{scroll-margin-top:16px}
+.toc{border-left:3px solid var(--ink);padding:4px 0 4px 20px;margin:40px 0 8px}
+.toc .kicker{margin-bottom:10px}
+.toc ol{margin:0;padding-left:20px}
+.toc li{margin:6px 0;font-size:16px;line-height:1.4}
+.toc a{text-decoration:none;color:var(--ink)}
+.toc a:hover{text-decoration:underline}
+.totop{margin:40px 0 0;font-size:15px}
+.totop a{text-decoration:none;display:inline-block;padding:10px 0}
+/* phones: small photo beside the name at the top of the homepage */
+@media (max-width:640px){
+  .hero{grid-template-columns:64px 1fr;grid-template-areas:"pic by" "h h" "p p";column-gap:14px;row-gap:0;align-items:center;padding-top:20px;padding-bottom:36px}
+  .hero>div{display:contents}
+  .hero img.portrait{grid-area:pic;width:64px;max-width:64px;margin:0}
+  .hero .s3{grid-area:by;margin:0;font-size:14px;line-height:1.4}
+  .hero .hero-h1{grid-area:h;margin-top:22px}
+  .hero .s2{grid-area:p;font-size:20px}
+  .toc li{font-size:15px}
+}

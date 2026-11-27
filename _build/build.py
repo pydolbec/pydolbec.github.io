@@ -91,7 +91,7 @@ def head(lang, title, desc, path, img=None, ld=""):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {ld}<link rel="stylesheet" href="/assets/css/site.css?v={CSS_V}">
 </head>
-<body>
+<body id="top">
 <header class="site-head"><div class="wrap">
 <a class="brand" href="{url(lang)}">{SITE['name']}</a>
 <input type="checkbox" id="navtoggle" class="navtoggle" aria-label="{'Menu' if lang == 'en' else 'Menu'}">
@@ -372,12 +372,29 @@ def paper_desc(p, lang, frag_html):
     return f"{who} · {p['venue']}, {p['year']}. {first.group(1) if first else sf}"
 
 
+def add_toc(essay, lang):
+    """Give each section heading an anchor and list the sections before the first one."""
+    heads = []
+
+    def tag(m):
+        heads.append(re.sub(r"<[^>]+>", "", m.group(1)).strip())
+        return f'<h2 id="s{len(heads)}">{m.group(1)}</h2>'
+    essay = re.sub(r"<h2>(.*?)</h2>", tag, essay, flags=re.S)
+    if len(heads) < 3:
+        return essay
+    label = "In this article" if lang == "en" else "Dans cet article"
+    items = "".join(f'<li><a href="#s{i}">{h}</a></li>' for i, h in enumerate(heads, 1))
+    toc = f'<nav class="toc" aria-label="{label}"><div class="kicker">{label}</div><ol>{items}</ol></nav>\n'
+    i = essay.find('<h2 id="s1">')
+    return essay[:i] + toc + essay[i:]
+
+
 def featured_page(p, lang, nxt):
     t = UI[lang]
     path = "research/" + p["slug"]
     frag = os.path.join(os.path.dirname(__file__), "essays", f"{p['slug']}.{lang}.html")
     if os.path.exists(frag):
-        essay = open(frag, encoding="utf-8").read()
+        essay = add_toc(open(frag, encoding="utf-8").read(), lang)
         body = f"""<article class="essay"><div class="narrow essay-head">
 <a class="more" style="margin:0 0 24px" href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <div class="kicker">{dict(t['nav'])['research']} · {e(p['tag'][lang])}</div>
@@ -385,6 +402,7 @@ def featured_page(p, lang, nxt):
 {essay}
 <div class="narrow">
 <div class="cite"><p>{citation(p, lang)} {'Figures: CC BY 4.0, Pierre-Yann Dolbec.' if lang == 'en' else 'Figures : CC BY 4.0, Pierre-Yann Dolbec.'}</p><a class="btn" href="{pub_link(p)}">{t['read_paper']}</a></div>
+<p class="totop"><a href="#top">{'↑ Back to top' if lang == 'en' else '↑ Haut de page'}</a></p>
 <div class="pager"><a href="{url(lang, 'research')}">{t['all_research_back']}</a>
 <a href="{url(lang, 'research/' + nxt['slug'])}">{t['next']} {e(nxt['q'][lang])} →</a></div>
 </div></article>"""
