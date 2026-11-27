@@ -94,6 +94,8 @@ def head(lang, title, desc, path, img=None, ld=""):
 <body>
 <header class="site-head"><div class="wrap">
 <a class="brand" href="{url(lang)}">{SITE['name']}</a>
+<input type="checkbox" id="navtoggle" class="navtoggle" aria-label="{'Menu' if lang == 'en' else 'Menu'}">
+<label for="navtoggle" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
 <nav class="nav" aria-label="Main">{nav}<span class="lang" aria-label="Language">{toggle}</span></nav>
 </div></header>
 <main>
