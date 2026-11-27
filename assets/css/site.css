@@ -308,8 +308,6 @@ main:focus{outline:none}
 .lang a:focus-visible{outline-offset:-5px}
 /* lists marked up as lists */
 ul.rows,ul.topics{list-style:none;margin:0;padding:0}
-ul.topics li{display:inline-block}
-.chip.tag{border:1px solid var(--line);background:var(--panel);font-weight:500;cursor:default}
 /* home cards: kicker, title and managers line share rows across each pair */
 .cards .card{display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0;align-content:start}
 /* French headline holds on two lines beside the portrait */
@@ -357,3 +355,10 @@ ul.topics li{display:inline-block}
 }
 /* phones: essay drawings use the full column, so their 12-unit type renders at about 11 px */
 @media (max-width:640px){.mech .ill{padding:14px 12px}}
+
+/* media topics: alphabetical, read down the columns; each topic links to its paper */
+ul.topics{columns:3 260px;column-gap:32px}
+ul.topics li{break-inside:avoid;border-top:1px solid var(--line)}
+ul.topics a{display:block;padding:12px 0;font-weight:500;text-decoration:none}
+ul.topics a::after{content:"\00a0\2192";color:var(--muted)}
+ul.topics a:hover{text-decoration:underline}

@@ -49,6 +49,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pydolbec.com/research/"/>
   </url>
   <url>
+    <loc>https://pydolbec.com/research/brand-celebrification/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pydolbec.com/research/brand-celebrification/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pydolbec.com/fr/research/brand-celebrification/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pydolbec.com/research/brand-celebrification/"/>
+  </url>
+  <url>
+    <loc>https://pydolbec.com/fr/research/brand-celebrification/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pydolbec.com/research/brand-celebrification/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://pydolbec.com/fr/research/brand-celebrification/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pydolbec.com/research/brand-celebrification/"/>
+  </url>
+  <url>
     <loc>https://pydolbec.com/research/coffee/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://pydolbec.com/research/coffee/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://pydolbec.com/fr/research/coffee/"/>

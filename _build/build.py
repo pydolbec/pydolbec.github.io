@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from content import HOME_SEO, PAGE_DESC, SITE, UI, PUBS, TOPICS, MEDIA, COURSES, TEXTBOOKS, CASE, BACKGROUND, BOARDS, ABOUT, BIOS, MEDIA_CONTACT, TEACHING, RESEARCH_INTRO
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import hashlib
+import hashlib, unicodedata
 CSS_V = hashlib.md5(open(os.path.join(ROOT, "assets/css/site.css"), "rb").read()).hexdigest()[:8]
 LANGS = ["en", "fr"]
 e = html.escape
@@ -426,7 +426,10 @@ var st=document.getElementById('pubcount');st.textContent=n+' '+st.dataset.label
 
 def media(lang):
     t = UI[lang]
-    topics = "".join(f'<li class="chip tag">{e(x)}</li>' for x in TOPICS[lang])
+    def tkey(x):
+        return unicodedata.normalize("NFD", x).encode("ascii", "ignore").decode().casefold()
+    topics = "".join(f'<li><a href="{url(lang, "research/" + slug)}">{e(n[lang])}</a></li>'
+                     for n, slug in sorted(TOPICS, key=lambda x: tkey(x[0][lang])))
 
     def headline(h, hl):
         return f"<span>{e(h)}</span>" if hl == lang else f'<span lang="{hl}">{e(h)}</span>'
