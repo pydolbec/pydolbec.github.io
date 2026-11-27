@@ -18,16 +18,16 @@ SITE = {
 HOME_SEO = {
     "en": {"title": "Associate Professor of Marketing, Concordia University",
            "job": "Associate Professor of Marketing",
-           "desc": "Pierre-Yann Dolbec is Associate Professor of Marketing at Concordia University's John Molson School of Business. He studies how markets are made, from streetwear and craft coffee to the creator economy."},
+           "desc": "Pierre-Yann Dolbec, Associate Professor of Marketing at Concordia University, studies how markets are made: streetwear, craft coffee, the creator economy."},
     "fr": {"title": "Professeur agrégé de marketing, Université Concordia",
            "job": "Professeur agrégé de marketing",
-           "desc": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia. Il étudie comment les marchés sont créés, du streetwear au café de spécialité et à l'économie des créateurs."},
+           "desc": "Pierre-Yann Dolbec, professeur agrégé de marketing à l'Université Concordia, étudie comment les marchés sont créés : streetwear, café artisanal, économie des créateurs."},
 }
 
 PAGE_DESC = {
     "en": {
         "about": "About Pierre-Yann Dolbec, Associate Professor of Marketing at Concordia University's John Molson School of Business: his research, background, editorial boards and CV.",
-        "research": "Research by Pierre-Yann Dolbec on how markets are made: streetwear and luxury fashion, craft coffee, the creator economy, regulation and qualitative methods.",
+        "research": "Research by Pierre-Yann Dolbec on how markets are made: streetwear and high fashion, craft coffee, the creator economy, regulation and qualitative methods.",
         "media": "Media resources for Pierre-Yann Dolbec, marketing professor at Concordia University: interview topics, bios and press coverage. Interviews in English and French.",
         "teaching": "Teaching by Pierre-Yann Dolbec at Concordia University: courses, open textbooks on digital marketing and on AI and marketing, and a teaching case.",
     },
@@ -44,7 +44,7 @@ UI = {
         "nav": [("about", "About"), ("research", "Research"), ("media", "Media"), ("teaching", "Teaching")],
         "hero_small": "I study how",
         "hero_big": "Markets are made.",
-        "hero_p2": "Streetwear in luxury fashion, craft coffee, the creator economy: each became a market because people built it. My research shows who built them, and how.",
+        "hero_p2": "Streetwear in high fashion, craft coffee, the creator economy: each became a market because people built it. My research shows who built them and how, and what firms need to do to enter or shape a market.",
         "hero_p3": "Associate Professor of Marketing, John Molson School of Business, Concordia University",
         "for_managers": "For managers:",
         "read_short": "Read the short version →",
@@ -66,7 +66,7 @@ UI = {
         "featured": "Featured",
         "all_pubs": "All publications",
         "filters": [("all", "All"), ("article", "Journal articles"), ("chapter", "Book chapters")],
-        "media_intro": "Available for interviews in English and French on how markets form and change.",
+        "media_intro": "Available for interviews in English and French on how markets are made and change.",
         "media_requests": "Media requests",
         "topics": "Topics I can speak to",
         "bio": "Bio",
@@ -79,7 +79,7 @@ UI = {
         "mba_exec": "MBA and executive teaching",
         "cases": "Teaching cases",
         "supervision": "Supervision",
-        "read_free": "Read free online", "download_pdf": "Download free PDF",
+        "read_free": "Read free online", "download_pdf": "Download free PDF (6.5 MB)",
         "view_case": "View case",
         "background": "Background",
         "article": "Journal article",
@@ -93,7 +93,7 @@ UI = {
         "nav": [("about", "À propos"), ("research", "Recherche"), ("media", "Médias"), ("teaching", "Enseignement")],
         "hero_small": "J'étudie comment",
         "hero_big": "Les marchés sont créés.",
-        "hero_p2": "Le streetwear dans le luxe, le café de spécialité, l'économie des créateurs : chacun est devenu un marché parce que des gens l'ont créé. Ma recherche montre qui les crée, et comment.",
+        "hero_p2": "Le streetwear dans la mode de luxe, le café artisanal, l'économie des créateurs : chacun est devenu un marché parce que des gens l'ont créé. Ma recherche montre qui les crée et comment, et ce que les entreprises doivent faire pour entrer dans un marché ou le façonner.",
         "hero_p3": "Professeur agrégé de marketing, École de gestion John-Molson, Université Concordia",
         "for_managers": "Pour les gestionnaires :",
         "read_short": "Lire la version courte →",
@@ -115,9 +115,9 @@ UI = {
         "featured": "En vedette",
         "all_pubs": "Toutes les publications",
         "filters": [("all", "Tout"), ("article", "Articles"), ("chapter", "Chapitres de livre")],
-        "media_intro": "Disponible pour des entrevues en français et en anglais sur la formation et l'évolution des marchés.",
+        "media_intro": "Disponible pour des entrevues en français et en anglais sur la façon dont les marchés sont créés et se transforment.",
         "media_requests": "Demandes des médias",
-        "topics": "Sujets",
+        "topics": "Sujets d'entrevue",
         "bio": "Biographie",
         "short_bio": "Biographie courte",
         "long_bio": "Biographie longue",
@@ -128,7 +128,7 @@ UI = {
         "mba_exec": "MBA et formation des cadres",
         "cases": "Études de cas",
         "supervision": "Supervision",
-        "read_free": "Lire gratuitement en ligne", "download_pdf": "Télécharger le PDF gratuit",
+        "read_free": "Lire gratuitement en ligne", "download_pdf": "Télécharger le PDF gratuit (6,5 Mo)",
         "view_case": "Voir le cas",
         "background": "Parcours",
         "article": "Article de revue",
@@ -158,7 +158,7 @@ PUBS = [
          mgr={"en": "how firms grow by borrowing practices from other segments of their market.", "fr": "comment les entreprises croissent en empruntant les pratiques d'autres segments de leur marché."}),
     dict(slug="creators", featured=True, img="/assets/img/cards/creators.webp", kind="article", year=2025,
          title="From Fame and Followers to Fortune: How Person-Brands Capture Value in the Creator Economy",
-         authors="Pierre-Yann Dolbec and Andrew Smith", venue="International Journal of Research in Marketing", details="42(4), 1264–1283", doi="", url="https://www.sciencedirect.com/science/article/pii/S0167811625000242",
+         authors="Pierre-Yann Dolbec and Andrew N. Smith", venue="International Journal of Research in Marketing", details="42(4), 1264–1283", doi="10.1016/j.ijresmar.2025.03.004", url="https://www.sciencedirect.com/science/article/pii/S0167811625000242",
          tag={"en": "Creators", "fr": "Créateurs"},
          q={"en": "How do creators turn followers into a fortune?", "fr": "Comment les créateurs transforment-ils leurs abonnés en revenus ?"},
          mgr={"en": "how a personal brand turns attention into revenue.", "fr": "comment une marque personnelle transforme l'attention en revenus."}),
@@ -171,7 +171,7 @@ PUBS = [
     # --- summaries ---
     dict(slug="fallacy-of-facility", kind="article", year=2026,
          title="The Fallacy of Facility: Concerns Regarding the (Mis)Use of GGT",
-         authors="Pierre-Yann Dolbec, Eileen Fischer, and Andrew Smith", venue="Journal of Consumer Psychology", details="36(4), 521–529", doi="10.1002/jcpy.70037"),
+         authors="Pierre-Yann Dolbec, Eileen Fischer, and Andrew N. Smith", venue="Journal of Consumer Psychology", details="36(4), 521–529", doi="10.1002/jcpy.70037"),
     dict(slug="sharing-and-hiding", kind="article", year=2026,
          title="Between Sharing and Hiding: How Consumers Shade Knowledge",
          authors="Aron Darmody, Pierre-Yann Dolbec, Mujde Yuksel, and Meera Venkatraman", venue="International Journal of Research in Marketing", details="43(3), 637–655", doi="10.1016/j.ijresmar.2025.08.001"),
@@ -195,20 +195,20 @@ PUBS = [
          authors="Rodrigo Castilhos, Pierre-Yann Dolbec, and Ela Veresiu", venue="Marketing Theory", details="17(1), 9–29", doi="10.1177/1470593116657915"),
     dict(slug="refashioning-a-field", kind="article", year=2015,
          title="Refashioning a Field? Connected Consumers and Institutional Dynamics in Markets",
-         authors="Pierre-Yann Dolbec and Eileen Fischer", venue="Journal of Consumer Research", details="41(6), 1447–1468", doi="", url="https://academic.oup.com/jcr/article/41/6/1447/2379578"),
+         authors="Pierre-Yann Dolbec and Eileen Fischer", venue="Journal of Consumer Research", details="41(6), 1447–1468", doi="10.1086/680671", url="https://academic.oup.com/jcr/article/41/6/1447/2379578"),
     dict(slug="flagship-store", kind="article", year=2013,
          title="The Impact of a Flagship vs. a Brand Store on Brand Attitude, Brand Attachment and Brand Equity",
-         authors="Pierre-Yann Dolbec and Jean-Charles Chebat", venue="Journal of Retailing", details="89(4), 460–466", doi="", url="https://www.sciencedirect.com/science/article/pii/S0022435913000468"),
+         authors="Pierre-Yann Dolbec and Jean-Charles Chebat", venue="Journal of Retailing", details="89(4), 460–466", doi="10.1016/j.jretai.2013.06.003", url="https://www.sciencedirect.com/science/article/pii/S0022435913000468"),
     dict(slug="template-creep", kind="chapter", year=2024,
          title="Reflections on Template Creep and Replicability Concerns in Contemporary Qualitative Research",
-         authors="Eileen Fischer and Pierre-Yann Dolbec", venue="Handbook of Qualitative Research Methods in Marketing, 2nd ed. (Edward Elgar)", details="69–78", doi="", url="https://www.elgaronline.com/edcollchap/book/9781035302727/book-part-9781035302727-13.xml"),
+         authors="Eileen Fischer and Pierre-Yann Dolbec", venue="Handbook of Qualitative Research Methods in Marketing, 2nd ed. (Edward Elgar)", details="69–78", doi="10.4337/9781035302727.00013", url="https://www.elgaronline.com/edcollchap/book/9781035302727/book-part-9781035302727-13.xml"),
     dict(slug="in-or-out", kind="chapter", year=2018,
          title="In or Out? How Consumer Performances Lead to the Emergence of New Tastes",
-         authors="Pierre-Yann Dolbec and Andre F. Maciel", venue="Taste, Consumption and Markets (Routledge)", details="95–112", doi="",
+         authors="Pierre-Yann Dolbec and Andre F. Maciel", venue="Taste, Consumption and Markets (Routledge)", details="95–112", doi="10.4324/9781315205922-7",
          url="https://www.routledge.com/Taste-Consumption-and-Markets-An-Interdisciplinary-Volume/Arsel-Bean/p/book/9781138636576"),
     dict(slug="netnographic-analysis", kind="chapter", year=2014,
          title="Netnographic Analysis: Capturing and Interpreting Culture through Websites, Blogs, Tweets, Facebook Posts, Virtual Worlds and Other Social Media Data",
-         authors="Robert V. Kozinets, Pierre-Yann Dolbec, and Amanda Earley", venue="The SAGE Handbook of Qualitative Data Analysis (Sage)", details="262–276", doi="",
+         authors="Robert V. Kozinets, Pierre-Yann Dolbec, and Amanda Earley", venue="The SAGE Handbook of Qualitative Data Analysis (Sage)", details="262–276", doi="10.4135/9781446282243.n18",
          url="https://www.researchgate.net/publication/319472120_Netnographic_Analysis_Understanding_Culture_through_Social_Media_Data"),
 ]
 
@@ -223,22 +223,26 @@ TOPICS = {  # from the Concordia media relations expert profile
            "Marché de la voiture électrique et Tesla", "Influenceurs et marketing sur les réseaux sociaux"],
 }
 
-MEDIA_CONTACT = {"phone": "514-848-2424, ext. 5967",
-                 "relations": "Concordia Media Relations: 514-848-2424, ext. 4880 · media.relations@concordia.ca"}
+MEDIA_CONTACT = {
+    "en": {"phone": "514-848-2424, ext. 5967",
+           "relations": "Concordia Media Relations: 514-848-2424, ext. 4880", "relations_email": "media.relations@concordia.ca"},
+    "fr": {"phone": "514-848-2424, poste 5967",
+           "relations": "Relations avec les médias de Concordia : 514-848-2424, poste 4880", "relations_email": "media.relations@concordia.ca"},
+}
 
 ABOUT = {  # adapted from the Concordia faculty biography
     "en": [
-        "We face complexity when there is no clear guideline for action. Diverging political interests, technological disruptions and societal upheavals have created competing and divisive expectations about what we should be doing in our personal lives and in society.",
-        "My research examines how markets become complex and how people and organizations manage that complexity. I study how public organizations respond to market pressures, how companies contribute to society while satisfying shareholders, and how consumers reshape markets.",
+        "I study how markets are made, how they become complex, and how people and organizations manage that complexity. We face complexity when there is no clear guideline for action. Diverging political interests, technological disruptions and societal upheavals have created competing and divisive expectations about what we should be doing in our personal lives and in society.",
+        "I examine how public organizations respond to market pressures, how companies contribute to society while satisfying shareholders, and how consumers reshape markets.",
         "My projects examine markets for coffee, tattoos, sneakers, fashion, music, transportation, microdosing and education, as well as social projects in Africa, South America and Southeast Asia. With my students, I also study digital influence, online influencers and the acculturation of wealthy consumers.",
-        "My work appears in the Journal of Consumer Research, Journal of Marketing Research, Journal of Marketing, Academy of Management Journal, Journal of the Academy of Marketing Science and International Journal of Research in Marketing, where it has received most-cited and most-downloaded distinctions. I have presented it at the World Economic Forum and at the conferences of the Association for Consumer Research, the European Association for Consumer Research, Consumer Culture Theory and the American Marketing Association. I have received close to $1M in research funding, mainly from the Social Sciences and Humanities Research Council and the Fonds de recherche du Québec – Société et culture.",
+        "My work appears in the Journal of Consumer Research, Journal of Marketing Research, Journal of Marketing, Academy of Management Journal, Journal of the Academy of Marketing Science and International Journal of Research in Marketing. This work has received most-cited and most-downloaded distinctions. I have presented it at the World Economic Forum and at the conferences of the Association for Consumer Research, the European Association for Consumer Research, Consumer Culture Theory and the American Marketing Association. I have received close to $1M in research funding, mainly from the Social Sciences and Humanities Research Council and the Fonds de recherche du Québec – Société et culture.",
         "I sit on the editorial review boards of the Journal of Consumer Research, Journal of Consumer Psychology, Marketing Theory, European Journal of Marketing, Journal of Advertising Research and Recherche et Applications en Marketing.",
     ],
     "fr": [
-        "Nous faisons face à la complexité lorsqu'aucune ligne directrice claire ne guide l'action. Des intérêts politiques divergents, des ruptures technologiques et des bouleversements sociaux ont créé des attentes concurrentes et divisives sur ce que nous devrions faire dans nos vies personnelles et en société.",
-        "Ma recherche examine comment les marchés deviennent complexes et comment les personnes et les organisations gèrent cette complexité. J'étudie comment les organisations publiques répondent aux pressions du marché, comment les entreprises contribuent à la société tout en satisfaisant leurs actionnaires, et comment les consommateurs transforment les marchés.",
+        "J'étudie comment les marchés sont créés, comment ils deviennent complexes, et comment les personnes et les organisations gèrent cette complexité. Nous faisons face à la complexité lorsqu'aucune ligne directrice claire ne guide l'action. Des intérêts politiques divergents, des ruptures technologiques et des bouleversements sociaux ont créé des attentes concurrentes et divisives sur ce que nous devrions faire dans nos vies personnelles et en société.",
+        "J'examine comment les organisations publiques répondent aux pressions du marché, comment les entreprises contribuent à la société tout en satisfaisant leurs actionnaires, et comment les consommateurs transforment les marchés.",
         "Mes projets portent sur les marchés du café, du tatouage, des sneakers, de la mode, de la musique, du transport, du microdosage et de l'éducation, ainsi que sur des projets sociaux en Afrique, en Amérique du Sud et en Asie du Sud-Est. Avec mes étudiants, j'étudie aussi l'influence numérique, les influenceurs et l'acculturation des consommateurs fortunés.",
-        "Mes travaux paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing, l'Academy of Management Journal, le Journal of the Academy of Marketing Science et l'International Journal of Research in Marketing, où ils ont figuré parmi les articles les plus cités et les plus téléchargés. Je les ai présentés au Forum économique mondial et aux congrès de l'Association for Consumer Research, de l'European Association for Consumer Research, de Consumer Culture Theory et de l'American Marketing Association. J'ai reçu près de 1 M$ en financement de recherche, principalement du Conseil de recherches en sciences humaines et du Fonds de recherche du Québec – Société et culture.",
+        "Mes travaux paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing, l'Academy of Management Journal, le Journal of the Academy of Marketing Science et l'International Journal of Research in Marketing. Ces travaux ont reçu des distinctions à titre d'articles les plus cités et les plus téléchargés. Je les ai présentés au Forum économique mondial et aux congrès de l'Association for Consumer Research, de l'European Association for Consumer Research, de Consumer Culture Theory et de l'American Marketing Association. J'ai reçu près de 1 M$ en financement de recherche, principalement du Conseil de recherches en sciences humaines et du Fonds de recherche du Québec – Société et culture.",
         "Je siège aux comités de rédaction du Journal of Consumer Research, du Journal of Consumer Psychology, de Marketing Theory, de l'European Journal of Marketing, du Journal of Advertising Research et de Recherche et Applications en Marketing.",
     ],
 }
@@ -250,14 +254,14 @@ BIOS = {
     },
     "fr": {
         "short": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés sont créés et se transforment, du streetwear et du café aux créateurs de contenu et aux plateformes. Ses recherches paraissent dans le Journal of Consumer Research, le Journal of Marketing Research et le Journal of Marketing.",
-        "long": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés sont créés et se transforment, et comment les entreprises et les consommateurs gèrent la complexité qui en découle. Ses travaux portent sur les marchés de la mode et du streetwear, du café, des sneakers, de la musique, de l'éducation et des plateformes comme Uber et Airbnb, ainsi que sur l'économie des créateurs. Ils paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing et l'Academy of Management Journal, et ont été présentés au Forum économique mondial. Il a reçu près de 1 M$ en financement de recherche et siège aux comités de rédaction de six revues, dont le Journal of Consumer Research et le Journal of Consumer Psychology. Ses travaux ont été couverts par CBC, Radio-Canada, CTV, Global TV, Channel News Asia, Le Devoir, Les Affaires et le National Post. Il accorde des entrevues en français et en anglais.",
+        "long": "Pierre-Yann Dolbec est professeur agrégé de marketing à l'École de gestion John-Molson de l'Université Concordia, à Montréal. Il étudie comment les marchés sont créés et se transforment, et comment les entreprises et les consommateurs gèrent la complexité qui en découle. Ses travaux portent sur les marchés de la mode et du streetwear, du café, des sneakers, de la musique, de l'éducation et des plateformes comme Uber et Airbnb, ainsi que sur l'économie des créateurs. Ils paraissent dans le Journal of Consumer Research, le Journal of Marketing Research, le Journal of Marketing et l'Academy of Management Journal, et ont été présentés au Forum économique mondial. Il a reçu près de 1 M$ en financement de recherche et siège aux comités de rédaction de six revues, dont le Journal of Consumer Research et le Journal of Consumer Psychology. Ses travaux ont été couverts par CBC, Radio-Canada, CTV News, Global TV, Channel News Asia, Le Devoir, Les Affaires et le National Post. Il accorde des entrevues en français et en anglais.",
     },
 }
 
 # From CV, newest first: (date, outlet, headline)
 MEDIA = [
     ("2026", "Academy of Management Insights", "Brazil's Temporary Stadium Beer Policy Was a Game-Changer"),
-    ("2026", "The Up Next Podcast", "How Creators Monetize their Work (with Andrew Smith)"),
+    ("2026", "The Up Next Podcast", "How Creators Monetize their Work (with Andrew N. Smith)"),
     ("2026", "CBC News", "They're odd, unique and expensive — why niche perfumes are trending"),
     ("2025", "Clin d'Œil", "Pourquoi les prix des parfums sont-ils astronomiques?"),
     ("2025", "CBC News", "This video game retailer is revamping the in-store experience for Montreal gamers"),
@@ -300,7 +304,7 @@ TEXTBOOKS = [
     dict(title="Digital Marketing Strategy", year=2021, link="https://opentextbooks.concordia.ca/digitalmarketing/", action="read",
          cover="https://opentextbooks.concordia.ca/digitalmarketing/wp-content/uploads/sites/41/2022/11/DMBCover_Photo-1-scaled-1-350x525.jpg",
          blurb={"en": "A free, open textbook that gives students a framework for planning and running marketing online. More than 3,000 students used it across universities in 2024, with companion podcasts, videos and transcripts.",
-                "fr": "Un manuel libre et gratuit qui donne aux étudiants un cadre pour planifier et mener le marketing en ligne. Plus de 3 000 étudiants l'ont utilisé dans plusieurs universités en 2024, avec balados, vidéos et transcriptions."}),
+                "fr": "Un manuel libre et gratuit qui donne aux étudiants un cadre pour planifier et mener le marketing en ligne. Plus de 3 000 étudiants l'ont utilisé dans plusieurs universités en 2024, avec balados, vidéos et transcriptions."}),
     dict(title="Artificial Intelligence and Marketing", year=2024, link="/assets/ai-and-marketing.pdf", action="download",
          cover="/assets/img/ai-cover.webp",
          blurb={"en": "A free textbook on how artificial intelligence works and how marketers can use it, written for business students and managers.",
@@ -315,7 +319,7 @@ TEACHING = {  # adapted from the teaching statement
     ],
     "fr": [
         "J'enseigne le marketing comme une pratique. Mes cours développent des compétences concrètes tout en amenant les étudiants à réfléchir de façon critique aux dimensions sociales et culturelles du comportement des consommateurs : ce que l'on met en marché, pourquoi, et avec quelles conséquences.",
-        "Les étudiants se préparent avant le cours grâce à des lectures, des balados, des vidéos et des transcriptions, afin que le temps en classe serve à l'application. Chaque séance s'ouvre sur des questions qui vérifient la compréhension, puis passe à des exercices fondés sur des cas réels et fictifs : analyser des campagnes numériques, développer des personas, bâtir des stratégies de contenu. Dans mon cours de marketing numérique, les étudiants créent des sites web et des campagnes pour le prélancement de produits fictifs; certains ont attiré des milliers d'abonnés ou l'attention des médias.",
+        "Les étudiants se préparent avant le cours grâce à des lectures, des balados, des vidéos et des transcriptions, afin que le temps en classe serve à l'application. Chaque séance s'ouvre sur des questions qui vérifient la compréhension, puis passe à des exercices fondés sur des cas réels et fictifs : analyser des campagnes numériques, développer des personas, bâtir des stratégies de contenu. Dans mon cours de marketing numérique, les étudiants créent des sites web et des campagnes pour le prélancement de produits fictifs ; certains ont attiré des milliers d'abonnés ou l'attention des médias.",
         "Je recueille de la rétroaction pendant et après chaque session, et j'explique aux étudiants comment leurs commentaires ont modifié le cours.",
     ],
 }
@@ -338,8 +342,8 @@ BACKGROUND = [
 ]
 
 RESEARCH_INTRO = {
-    "en": "I study how consumers and firms deal with market complexity, the conflicting expectations that institutions, technologies and social norms place on them, and how they use that complexity to shape markets. For scholars, my work explains how market categories form and change, how newcomers gain access to elite categories, and how new brands resolve cultural contradictions to build distinctive identities. For managers, it addresses core questions of strategy: how to enter a category, how to build a distinctive and resonant position, and how to shape the market you compete in. I build in-depth case studies from archives, interviews and fieldwork, often in partnership with the organizations involved, from Brazilian Jesuit schools to AAK's shea sourcing program in West Africa. The cases range from streetwear and craft coffee to the creator economy and the regulation of beer at Brazil's 2014 World Cup.",
-    "fr": "J'étudie comment les consommateurs et les entreprises composent avec la complexité des marchés, soit les attentes contradictoires que leur imposent les institutions, les technologies et les normes sociales, et comment ils utilisent cette complexité pour façonner les marchés. Pour les chercheurs, mes travaux expliquent comment les catégories de marché se forment et évoluent, comment de nouveaux venus accèdent aux catégories d'élite, et comment de nouvelles marques résolvent des contradictions culturelles pour se bâtir une identité distinctive. Pour les gestionnaires, ils répondent à des questions centrales de stratégie : comment entrer dans une catégorie, comment bâtir un positionnement distinctif qui résonne, et comment façonner le marché où l'on se fait concurrence. Je construis des études de cas approfondies à partir d'archives, d'entrevues et de travail de terrain, souvent en partenariat avec les organisations concernées, des écoles jésuites brésiliennes au programme d'approvisionnement en karité d'AAK en Afrique de l'Ouest. Les cas vont du streetwear et du café de spécialité à l'économie des créateurs et à la réglementation de la bière lors de la Coupe du monde 2014 au Brésil.",
+    "en": "I study how markets are made: how consumers and firms deal with market complexity (the conflicting expectations that institutions, technologies and social norms place on them) and how they use that complexity to shape markets. For scholars, my work explains how market categories form and change, how newcomers gain access to elite categories, and how new brands resolve cultural contradictions to build distinctive identities. For managers, it addresses core questions of strategy: how to enter a category, how to build a distinctive and resonant position, and how to shape the market you compete in. I build in-depth case studies from archives, interviews and fieldwork, often in partnership with the organizations involved, from Brazilian Jesuit schools to AAK's shea sourcing program in West Africa. The cases range from streetwear and craft coffee to the creator economy and the regulation of beer at Brazil's 2014 World Cup.",
+    "fr": "J'étudie comment les marchés sont créés : comment les consommateurs et les entreprises composent avec la complexité des marchés, soit les attentes contradictoires que leur imposent les institutions, les technologies et les normes sociales, et comment ils utilisent cette complexité pour façonner les marchés. Pour les chercheurs, mes travaux expliquent comment les catégories de marché se forment et évoluent, comment de nouveaux venus accèdent aux catégories d'élite, et comment de nouvelles marques résolvent des contradictions culturelles pour se bâtir une identité distinctive. Pour les gestionnaires, ils répondent à des questions centrales de stratégie : comment entrer dans une catégorie, comment bâtir un positionnement distinctif qui trouve écho auprès de la clientèle, et comment façonner le marché où l'on se fait concurrence. Je mène des études de cas approfondies à partir d'archives, d'entrevues et de travail de terrain, souvent en partenariat avec les organisations concernées, des écoles jésuites brésiliennes au programme d'approvisionnement en karité d'AAK en Afrique de l'Ouest. Les cas vont du streetwear et du café artisanal à l'économie des créateurs et à la réglementation de la bière lors de la Coupe du monde 2014 au Brésil.",
 }
 
 BOARDS = ["Journal of Consumer Research", "Journal of Consumer Psychology",
