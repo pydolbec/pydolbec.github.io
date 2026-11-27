@@ -265,8 +265,27 @@ html{scroll-behavior:smooth}
   .hero{grid-template-columns:64px 1fr;grid-template-areas:"pic by" "h h" "p p";column-gap:14px;row-gap:0;align-items:center;padding-top:20px;padding-bottom:36px}
   .hero>div{display:contents}
   .hero img.portrait{grid-area:pic;width:64px;max-width:64px;margin:0}
-  .hero .s3{grid-area:by;margin:0;font-size:14px;line-height:1.4}
+  .hero .s3{grid-area:by;margin:0;font-size:15px;line-height:1.4}
+  .hero .s3 b,.hero .s3 .sep{display:none}
   .hero .hero-h1{grid-area:h;margin-top:22px}
   .hero .s2{grid-area:p;font-size:20px}
   .toc li{font-size:15px}
 }
+/* review round 2 (phones) */
+@media (max-width:640px){
+  .about{gap:24px}
+  .about>div:first-child{display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:center}
+  .about img.portrait{max-width:88px;width:88px;margin:0}
+  .about .facts{margin:0;padding:0;border:0;font-size:15px}
+  .panel a[href^="mailto"]{font-size:15px;white-space:nowrap}
+  .site-foot a[href^="mailto"]{display:inline-block;padding:10px 0}
+  .photo .credit{font-size:12.5px}
+}
+/* research list: publisher link beside the year */
+.row.pubrow{grid-template-columns:1fr 280px 170px}
+.pubrow a.t{text-decoration:none;color:var(--ink)}
+.pubrow a.t:hover{text-decoration:underline}
+.pubrow .pub{color:var(--accent);text-decoration:none;white-space:nowrap}
+.pubrow .pub:hover{text-decoration:underline}
+@media (max-width:900px){.row.pubrow{grid-template-columns:1fr}.pubrow .y{text-align:left}}
+@media (max-width:640px){.pubrow .pub{display:inline-block;padding:8px 0}}

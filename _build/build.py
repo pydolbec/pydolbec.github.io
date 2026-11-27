@@ -171,7 +171,15 @@ def fix_imgs(doc):
     return doc
 
 
-def pub_row(p, lang):
+def pub_row(p, lang, publisher=False):
+    if publisher:
+        label = "Publisher" if lang == "en" else "Éditeur"
+        if "researchgate.net" in pub_link(p):
+            label = "ResearchGate"
+        return (f'<div class="row pubrow" data-kind="{p["kind"]}">'
+                f'<a class="t" href="{url(lang, "research/" + p["slug"])}">{e(p["title"])}</a><span class="v">{e(p["venue"])}</span>'
+                f'<span class="y">{year_label(p, lang)} · <a class="pub" href="{pub_link(p)}" target="_blank" rel="noopener" '
+                f'aria-label="{label}: {e(p["title"])}">{label}&nbsp;↗</a></span></div>')
     return (f'<a class="row" href="{url(lang, "research/" + p["slug"])}" data-kind="{p["kind"]}">'
             f'<span class="t">{e(p["title"])}</span><span class="v">{e(p["venue"])}</span>'
             f'<span class="y">{year_label(p, lang)}</span></a>')
@@ -229,7 +237,7 @@ def home(lang):
 <div>
 <h1 class="hero-h1"><span class="s1">{e(t['hero_small'])}</span> <span class="big">{e(t['hero_big'])}</span></h1>
 <p class="s2">{e(t['hero_p2'])}</p>
-<p class="s3"><b>{SITE['name']}</b> · {e(t['hero_p3'])}</p>
+<p class="s3"><b>{SITE['name']}</b><span class="sep"> · </span>{e(t['hero_p3'])}</p>
 </div>
 <img class="portrait" src="/assets/img/portrait.webp" alt="Portrait of Pierre-Yann Dolbec" width="800" height="800">
 </section>
@@ -265,7 +273,7 @@ def research(lang):
 <div class="kicker" style="margin-top:12px">{e(p['tag'][lang])}</div><h3>{e(p['q'][lang])}</h3></a>""" for p in featured())
     chips = "".join(f'<button class="chip{" on" if k == "all" else ""}" data-f="{k}">{e(v)}</button>' for k, v in t["filters"])
     allp = sorted(PUBS, key=lambda p: -(p["year"] or 9999))
-    rows = "".join(pub_row(p, lang) for p in allp)
+    rows = "".join(pub_row(p, lang, publisher=True) for p in allp)
     title = dict(t["nav"])["research"]
     body = f"""<div class="wrap">
 <h1 class="page">{e(title)}</h1>
