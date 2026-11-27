@@ -37,11 +37,11 @@ h2{font-size:30px;letter-spacing:-.5px;margin:72px 0 20px;line-height:1.2}
 .chip.on{background:var(--ink);color:#fff}
 
 /* home */
-.hero{display:grid;grid-template-columns:1fr minmax(280px,420px);gap:72px;align-items:center;padding:40px 0 64px;border-bottom:1.5px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1fr minmax(280px,420px);gap:72px;align-items:center;padding:40px 0 56px;border-bottom:1.5px solid var(--ink)}
 .hero .s1{font-size:28px;color:#333;font-weight:500}
 .hero .big{font-size:clamp(56px,8.5vw,108px);line-height:.92;letter-spacing:-4px;font-weight:800;margin:8px 0 28px}
 .hero .s2{font-size:24px;line-height:1.4;max-width:620px;color:#222;font-weight:500}
-.hero .s3{font-size:16px;margin-top:18px;color:var(--muted)}
+.hero .s3{font-size:16px;margin:18px 0 0;color:var(--muted)}
 .hero .s3 b{color:var(--ink)}
 .hero .portrait{aspect-ratio:4/5}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:44px 32px;padding-top:56px}
